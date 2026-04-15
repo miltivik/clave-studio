@@ -8,6 +8,9 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { contactSchema, type ContactFormData } from "@/lib/validations"
 import { Logo } from "@/components/Logo"
+import { useHasMounted } from "@/hooks/useHasMounted"
+import { useMediaQuery } from "@/hooks/useMediaQuery"
+import { useReducedMotion } from "@/hooks/useReducedMotion"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -15,6 +18,10 @@ export function CTAFinal() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const keyRef = useRef<HTMLDivElement>(null)
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle")
+  const hasMounted = useHasMounted()
+  const isMobile = useMediaQuery("(max-width: 767px)")
+  const prefersReducedMotion = useReducedMotion()
+  const shouldReduceMotion = !hasMounted || isMobile || prefersReducedMotion
 
   const {
     register,
@@ -26,8 +33,7 @@ export function CTAFinal() {
   })
 
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    if (prefersReducedMotion || !sectionRef.current) return
+    if (shouldReduceMotion || !sectionRef.current) return
 
     const ctx = gsap.context(() => {
       // Background key rotation
@@ -56,7 +62,7 @@ export function CTAFinal() {
     }, sectionRef)
 
     return () => ctx.revert()
-  }, [])
+  }, [shouldReduceMotion])
 
   const onSubmit = async (data: ContactFormData) => {
     setStatus("submitting")
@@ -92,10 +98,11 @@ export function CTAFinal() {
         {/* Header */}
         <motion.div
           className="text-center mb-12"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 30 }}
+          whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+          animate={shouldReduceMotion ? { opacity: 1, y: 0 } : undefined}
+          viewport={shouldReduceMotion ? undefined : { once: true }}
+          transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
         >
           <span className="text-oro-clave font-body text-sm font-medium tracking-widest uppercase mb-4 block">
             Hablemos
@@ -137,10 +144,11 @@ export function CTAFinal() {
           <motion.form
             onSubmit={handleSubmit(onSubmit)}
             className="space-y-5"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+            whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+            animate={shouldReduceMotion ? { opacity: 1, y: 0 } : undefined}
+            viewport={shouldReduceMotion ? undefined : { once: true }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.6, delay: shouldReduceMotion ? 0 : 0.2 }}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {/* Name */}

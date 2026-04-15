@@ -1,48 +1,48 @@
 "use client"
 
 import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 
 const FAQS = [
   {
-    question: "¿En cuánto tiempo me entregan el proyecto?",
+    question: "En cuanto tiempo me entregan el proyecto?",
     answer:
-      "Nuestros proyectos tienen un plazo promedio de 18 días desde que arrancamos. Antes de empezar te damos una fecha de entrega comprometida por escrito.",
+      "Nuestros proyectos tienen un plazo promedio de 18 dias desde que arrancamos. Antes de empezar te damos una fecha de entrega comprometida por escrito.",
   },
   {
-    question: "¿Necesito tener el diseño listo para empezar?",
+    question: "Necesito tener el diseno listo para empezar?",
     answer:
-      "No. Nosotros nos encargamos del diseño completo. Vos solo nos contás tu negocio y tus objetivos, y nosotros creamos la propuesta visual.",
+      "No. Nosotros nos encargamos del diseno completo. Vos solo nos contas tu negocio y tus objetivos, y nosotros creamos la propuesta visual.",
   },
   {
-    question: "¿Qué pasa si no me gusta cómo quedó?",
+    question: "Que pasa si no me gusta como quedo?",
     answer:
-      "El proceso incluye dos rondas de revisión sin costo. Trabajamos hasta que estés conforme con el resultado.",
+      "El proceso incluye dos rondas de revision sin costo. Trabajamos hasta que estes conforme con el resultado.",
   },
   {
-    question: "¿Puedo editar el sitio yo mismo después?",
+    question: "Puedo editar el sitio yo mismo despues?",
     answer:
-      "Sí. Todos nuestros proyectos incluyen un panel de administración sencillo. Y te capacitamos para usarlo antes del lanzamiento.",
+      "Si. Todos nuestros proyectos incluyen un panel de administracion sencillo. Y te capacitamos para usarlo antes del lanzamiento.",
   },
   {
-    question: "¿Trabajan con clientes fuera de Argentina?",
+    question: "Trabajan con clientes fuera de Uruguay?",
     answer:
-      "Trabajamos con clientes en toda LATAM: Argentina, Uruguay, Chile, Colombia, México y más. Las reuniones son por Zoom, en horario de LATAM.",
+      "Si. Hoy tenemos foco comercial en Uruguay, pero tambien trabajamos con clientes de otros paises de LATAM cuando el proyecto encaja bien. Las reuniones se coordinan por Zoom, en horario Uruguay.",
   },
   {
-    question: "¿Qué plataformas usan para los e-commerce?",
+    question: "Que plataformas usan para los e-commerce?",
     answer:
-      "Dependiendo del proyecto usamos Shopify, WooCommerce o desarrollo custom. Te recomendamos la que mejor se adapte a tu negocio y presupuesto.",
+      "Dependiendo del proyecto usamos Shopify, WooCommerce o desarrollo custom. Te recomendamos la que mejor se adapte a tu negocio, presupuesto y operacion.",
   },
   {
-    question: "¿Qué es exactamente una automatización?",
+    question: "Que es exactamente una automatizacion?",
     answer:
-      "Es conectar tus herramientas para que ciertas tareas sucedan solas: cuando alguien completa un formulario, te llega un WhatsApp, se agrega al CRM y recibe un email de bienvenida automáticamente. Sin que hagas nada.",
+      "Es conectar tus herramientas para que ciertas tareas sucedan solas: cuando alguien completa un formulario, te llega un WhatsApp, se agrega al CRM y recibe un email de bienvenida automaticamente. Sin que hagas nada.",
   },
   {
-    question: "¿Tienen soporte después del lanzamiento?",
+    question: "Tienen soporte despues del lanzamiento?",
     answer:
-      "Todos los planes incluyen soporte post-lanzamiento. El tiempo varía según el plan (1 a 6 meses). Después del período de soporte ofrecemos planes de mantenimiento mensual.",
+      "Todos los planes incluyen soporte post-lanzamiento. El tiempo varia segun el plan, y despues del periodo inicial podemos seguir con mantenimiento mensual o mejoras evolutivas.",
   },
 ]
 
@@ -59,14 +59,14 @@ function FAQItem({
     <div className="border-b border-negro-clave/10 last:border-b-0">
       <button
         onClick={onToggle}
-        className="w-full flex items-start justify-between gap-4 py-5 text-left bg-transparent border-none cursor-pointer group"
+        className="group flex w-full items-start justify-between gap-4 border-none bg-transparent py-5 text-left cursor-pointer"
         aria-expanded={isOpen}
       >
-        <span className="font-body text-negro-clave font-medium text-[15px] leading-snug group-hover:text-oro-clave transition-colors">
+        <span className="font-body text-negro-clave font-medium text-[15px] leading-snug transition-colors group-hover:text-oro-clave">
           {faq.question}
         </span>
         <motion.span
-          className="text-oro-clave text-xl leading-none shrink-0 mt-0.5"
+          className="mt-0.5 shrink-0 text-xl leading-none text-oro-clave"
           animate={{ rotate: isOpen ? 45 : 0 }}
           transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
         >
@@ -82,7 +82,7 @@ function FAQItem({
             transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
             className="overflow-hidden"
           >
-            <p className="text-grafito text-sm leading-relaxed pb-5 pr-12">
+            <p className="pb-5 pr-12 text-sm leading-relaxed text-grafito">
               {faq.answer}
             </p>
           </motion.div>
@@ -95,8 +95,8 @@ function FAQItem({
 export function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
-  const toggle = (i: number) => {
-    setOpenIndex(openIndex === i ? null : i)
+  function toggle(index: number) {
+    setOpenIndex(openIndex === index ? null : index)
   }
 
   const half = Math.ceil(FAQS.length / 2)
@@ -106,18 +106,15 @@ export function FAQSection() {
   return (
     <section id="faq" className="bg-crema section-padding">
       <div className="container-clave">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <span className="text-oro-clave font-body text-sm font-medium tracking-widest uppercase mb-4 block">
+        <div className="mb-16 text-center">
+          <span className="mb-4 block font-body text-sm font-medium uppercase tracking-widest text-oro-clave">
             FAQ
           </span>
-          <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] text-negro-clave font-light leading-tight">
-            Preguntas{" "}
-            <span className="text-oro-clave italic">frecuentes.</span>
+          <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] font-light leading-tight text-negro-clave">
+            Preguntas <span className="text-oro-clave italic">frecuentes.</span>
           </h2>
         </div>
 
-        {/* JSON-LD for SEO */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -136,25 +133,24 @@ export function FAQSection() {
           }}
         />
 
-        {/* Two-column FAQ grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-16 max-w-[1000px] mx-auto">
+        <div className="mx-auto grid max-w-[1000px] grid-cols-1 gap-0 lg:grid-cols-2 lg:gap-16">
           <div>
-            {col1.map((faq, i) => (
+            {col1.map((faq, index) => (
               <FAQItem
-                key={i}
+                key={faq.question}
                 faq={faq}
-                isOpen={openIndex === i}
-                onToggle={() => toggle(i)}
+                isOpen={openIndex === index}
+                onToggle={() => toggle(index)}
               />
             ))}
           </div>
           <div>
-            {col2.map((faq, i) => (
+            {col2.map((faq, index) => (
               <FAQItem
-                key={i + half}
+                key={faq.question}
                 faq={faq}
-                isOpen={openIndex === i + half}
-                onToggle={() => toggle(i + half)}
+                isOpen={openIndex === index + half}
+                onToggle={() => toggle(index + half)}
               />
             ))}
           </div>

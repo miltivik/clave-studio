@@ -4,13 +4,18 @@ import { useRef, useEffect } from "react"
 import { motion } from "framer-motion"
 import { gsap } from "gsap"
 import { Logo3D } from "@/components/ui/logo-3d"
+import { useHasMounted } from "@/hooks/useHasMounted"
+import { useMediaQuery } from "@/hooks/useMediaQuery"
+import { useReducedMotion } from "@/hooks/useReducedMotion"
 
 function KeyVisual() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const hasMounted = useHasMounted()
+  const isMobile = useMediaQuery("(max-width: 767px)")
+  const prefersReducedMotion = useReducedMotion()
 
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    if (prefersReducedMotion || !containerRef.current) return
+    if (!hasMounted || isMobile || prefersReducedMotion || !containerRef.current) return
 
     const el = containerRef.current
     gsap.to(el, {
@@ -20,18 +25,18 @@ function KeyVisual() {
       yoyo: true,
       ease: "power1.inOut",
     })
-  }, [])
+  }, [hasMounted, isMobile, prefersReducedMotion])
 
   return (
-    <div className="relative flex items-center justify-center w-full h-full min-h-[400px] lg:min-h-[500px]">
+    <div className="relative flex items-center justify-center w-full h-full min-h-[320px] sm:min-h-[400px] lg:min-h-[500px]">
       {/* Background glow */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-        <div className="w-[300px] h-[300px] lg:w-[400px] lg:h-[400px] rounded-full bg-oro-clave/10 blur-[80px]" />
+        <div className="h-[240px] w-[240px] rounded-full bg-oro-clave/10 blur-[70px] sm:h-[300px] sm:w-[300px] lg:h-[400px] lg:w-[400px] lg:blur-[80px]" />
       </div>
       {/* Rotating 3D key */}
       <div
         ref={containerRef}
-        className="relative w-full h-[400px] lg:h-[500px]"
+        className="relative h-[320px] w-full sm:h-[400px] lg:h-[500px]"
       >
         <Logo3D />
       </div>
@@ -62,19 +67,24 @@ function KeyVisual() {
 }
 
 export function HeroSection() {
+  const hasMounted = useHasMounted()
+  const isMobile = useMediaQuery("(max-width: 767px)")
+  const prefersReducedMotion = useReducedMotion()
+  const shouldReduceMotion = !hasMounted || isMobile || prefersReducedMotion
+
   return (
     <section
       id="hero"
       className="relative min-h-screen flex items-center bg-negro-clave overflow-hidden pt-[72px]"
     >
-      <div className="container-clave grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-4 items-center py-12 lg:py-0">
+      <div className="container-clave grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-4 items-center py-10 pb-20 sm:py-12 sm:pb-24 lg:py-0">
         {/* Left: Copy */}
         <div className="order-2 lg:order-1 flex flex-col gap-6 lg:gap-8">
           {/* Badge */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0 }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.6, delay: 0 }}
           >
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-oro-clave/10 border border-oro-clave/20 text-oro-clave text-sm font-body">
               🔑 Agencia Digital · LATAM
@@ -84,9 +94,13 @@ export function HeroSection() {
           {/* H1 */}
           <motion.h1
             className="font-display text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.05] font-light tracking-tight"
-            initial={{ opacity: 0, y: 40 }}
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
+            transition={{
+              duration: shouldReduceMotion ? 0 : 0.8,
+              delay: shouldReduceMotion ? 0 : 0.1,
+              ease: [0.4, 0, 0.2, 1],
+            }}
           >
             Tu próxima venta
             <br />
@@ -99,9 +113,9 @@ export function HeroSection() {
           {/* Subtitle */}
           <motion.p
             className="text-grafito text-lg lg:text-xl max-w-[520px] leading-relaxed font-light"
-            initial={{ opacity: 0 }}
+            initial={shouldReduceMotion ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.6, delay: shouldReduceMotion ? 0 : 0.4 }}
           >
             Creamos sitios web, tiendas online y automatizaciones para pymes
             en LATAM. Rapidas, visibles en Google y pensadas para convertir.
@@ -109,15 +123,21 @@ export function HeroSection() {
 
           {/* CTAs */}
           <motion.div
-            className="flex flex-wrap gap-4 mt-2"
-            initial={{ opacity: 0, y: 20 }}
+            className="mt-2 flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4"
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.6, delay: shouldReduceMotion ? 0 : 0.6 }}
           >
-            <a href="#contacto" className="btn-primary">
+            <a
+              href="#contacto"
+              className="btn-primary w-full justify-center text-center whitespace-normal sm:w-auto sm:whitespace-nowrap"
+            >
               Quiero una web que venda →
             </a>
-            <a href="/servicios" className="btn-secondary">
+            <a
+              href="/servicios"
+              className="btn-secondary w-full justify-center text-center whitespace-normal sm:w-auto sm:whitespace-nowrap"
+            >
               Ver servicios
             </a>
           </motion.div>
@@ -126,9 +146,13 @@ export function HeroSection() {
         {/* Right: Key Visual */}
         <motion.div
           className="order-1 lg:order-2"
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.3, ease: [0.4, 0, 0.2, 1] }}
+          transition={{
+            duration: shouldReduceMotion ? 0 : 1,
+            delay: shouldReduceMotion ? 0 : 0.3,
+            ease: [0.4, 0, 0.2, 1],
+          }}
         >
           <KeyVisual />
         </motion.div>
@@ -136,7 +160,7 @@ export function HeroSection() {
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-grafito"
+        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-grafito md:flex"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.0 }}

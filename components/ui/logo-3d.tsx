@@ -8,6 +8,7 @@ import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader.js';
 
 interface Logo3DProps {
   url?: string;
+  className?: string;
 }
 
 function SvgShape({ shape, color }: { shape: THREE.Shape; color: THREE.Color }) {
@@ -74,9 +75,9 @@ function SvgModel({ url = '/logo-3d.svg' }: { url?: string }) {
   );
 }
 
-export function Logo3D({ url = '/logo-3d.svg' }: Logo3DProps) {
+export function Logo3D({ url = '/logo-3d.svg', className = '' }: Logo3DProps) {
   return (
-    <div className="w-full h-[500px] relative pointer-events-none">
+    <div className={`relative h-[320px] w-full -translate-y-5 scale-90 transform-gpu pointer-events-none sm:h-[420px] sm:translate-y-0 sm:scale-100 lg:h-[500px] ${className}`}>
       <Canvas 
         camera={{ position: [0, 0, 200], fov: 50 }}
         gl={{ alpha: true, antialias: true }}

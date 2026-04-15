@@ -71,6 +71,7 @@ export function PricingSection() {
               key={plan.name}
               delay={i * 0.1}
               duration={0.5}
+              disableOnMobile
               className={`@container relative rounded-2xl p-8 lg:p-10 flex flex-col ${
                 plan.featured
                   ? "bg-negro-mid border-2 border-oro-clave lg:scale-105 z-10 shadow-[0_0_60px_rgba(201,137,10,0.1)]"
