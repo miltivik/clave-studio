@@ -1,0 +1,32 @@
+export const siteConfig = {
+  name: "Clave Studio Digital",
+  shortName: "Clave",
+  url: "https://clave.studio",
+  email: "hola@clave.studio",
+  locale: "es_419",
+  defaultTitle: "Clave Studio Digital - Agencia Digital en Uruguay para Pymes",
+  defaultDescription:
+    "Estudio digital con foco en Uruguay. Creamos sitios web, tiendas online y automatizaciones para pymes que necesitan vender mejor, verse bien en Google y operar con mas claridad.",
+  ogDescription:
+    "Desarrollo web, e-commerce y automatizaciones para pymes en Uruguay, con soporte para equipos de la region.",
+  keywords: [
+    "agencia digital uruguay",
+    "desarrollo web uruguay",
+    "e-commerce uruguay",
+    "tienda online uruguay",
+    "automatizaciones uruguay",
+    "agencia web pymes",
+    "shopify uruguay",
+    "desarrollo frontend uruguay",
+  ],
+  routes: {
+    home: "/",
+    services: "/servicios",
+    privacy: "/privacidad",
+    terms: "/terminos",
+    agenciaDigitalUruguay: "/agencia-digital-uruguay",
+    desarrolloWebUruguay: "/desarrollo-web-uruguay",
+    ecommerceUruguay: "/ecommerce-uruguay",
+    automatizacionesUruguay: "/automatizaciones-uruguay",
+  },
+} as const

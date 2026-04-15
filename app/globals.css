@@ -1,1 +1,201 @@
 @import "tailwindcss";
+
+/* ========================================
+   CLAVE STUDIO DIGITAL — Design Tokens
+   ======================================== */
+
+@theme {
+  /* Brand Colors */
+  --color-negro-clave: #0F0E0A;
+  --color-oro-clave: #C9890A;
+  --color-miel: #E8B84B;
+  --color-crema: #F7F3EA;
+  --color-grafito: #6B6760;
+  --color-negro-mid: #1A1916;
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+}
+
+:root {
+  /* Typography */
+  --font-display: 'Cormorant', 'Georgia', serif;
+  --font-body: 'Jost', 'system-ui', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  /* Spacing */
+  --section-py: clamp(5rem, 10vw, 9rem);
+  --container-px: clamp(1.25rem, 5vw, 6rem);
+  --max-width: 80rem;
+
+  /* Animations */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast: 200ms;
+  --duration-mid: 400ms;
+  --duration-slow: 700ms;
+}
+
+/* ========================================
+   Base Styles
+   ======================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 112.5%; /* 18px base for mobile */
+  scroll-behavior: auto; /* Lenis handles smooth scrolling */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 125%; /* 20px base for tablet */
+  }
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 137.5%; /* 22px base for desktop */
+  }
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-negro-clave);
+  color: var(--color-crema);
+  overflow-x: hidden;
+}
+
+/* ========================================
+   Typography Utilities
+   ======================================== */
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* ========================================
+   Container
+   ======================================== */
+
+.container-clave {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-px);
+  padding-right: var(--container-px);
+}
+
+.section-padding {
+  padding-top: var(--section-py);
+  padding-bottom: var(--section-py);
+}
+
+/* ========================================
+   Selection
+   ======================================== */
+
+::selection {
+  background-color: var(--color-oro-clave);
+  color: var(--color-negro-clave);
+}
+
+/* ========================================
+   Scrollbar Styling
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-negro-clave);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-grafito);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-oro-clave);
+}
+
+/* ========================================
+   Buttons
+   ======================================== */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background-color: var(--color-oro-clave);
+  color: var(--color-negro-clave);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  transition: transform var(--duration-fast) var(--ease-smooth),
+              background-color var(--duration-fast) var(--ease-smooth);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  transform: scale(1.03);
+  background-color: var(--color-miel);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background-color: transparent;
+  color: var(--color-crema);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(201, 137, 10, 0.4);
+  cursor: pointer;
+  transition: border-color var(--duration-fast) var(--ease-smooth);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-oro-clave);
+}
+
+/* ========================================
+   Reduced Motion
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
