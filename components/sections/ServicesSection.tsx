@@ -12,45 +12,45 @@ const SERVICES = [
     number: "01",
     title: ["Sitios web que", "trabajan por vos."],
     description:
-      "DiseÃ±amos y desarrollamos tu presencia digital desde cero: rÃ¡pida, visible en Google y pensada para convertir visitantes en clientes.",
+      "Disenamos y desarrollamos tu presencia digital desde cero: rapida, visible en Google y pensada para convertir visitantes en clientes.",
     features: [
-      "DiseÃ±o UI/UX personalizado",
+      "Diseno UI/UX personalizado",
       "Desarrollo Next.js (carga en menos de 2 segundos)",
-      "SEO tÃ©cnico desde el dÃ­a 1",
-      "Panel de administraciÃ³n para que edites vos mismo",
+      "SEO tecnico desde el dia 1",
+      "Panel de administracion para que edites vos mismo",
       "3 meses de soporte incluido",
     ],
-    cta: "Ver proyectos web â†’",
+    cta: "Ver proyectos web ->",
     accent: "from-oro-clave/20 to-transparent",
   },
   {
     number: "02",
     title: ["Tu tienda online,", "lista para vender."],
     description:
-      "Armamos tu e-commerce con todo lo necesario para empezar a vender online: catÃ¡logo, pagos, envÃ­os y una experiencia de compra que genera confianza.",
+      "Armamos tu e-commerce con todo lo necesario para empezar a vender online: catalogo, pagos, envios y una experiencia de compra que genera confianza.",
     features: [
       "Tienda con Shopify, WooCommerce o custom",
-      "IntegraciÃ³n de medios de pago LATAM (Mercado Pago, PayU, Stripe)",
-      "GestiÃ³n de stock e inventario",
-      "Emails automÃ¡ticos de compra y seguimiento",
-      "OptimizaciÃ³n de checkout para reducir abandono",
+      "Integracion de medios de pago LATAM (Mercado Pago, PayU, Stripe)",
+      "Gestion de stock e inventario",
+      "Emails automaticos de compra y seguimiento",
+      "Optimizacion de checkout para reducir abandono",
     ],
-    cta: "Quiero mi tienda online â†’",
+    cta: "Quiero mi tienda online ->",
     accent: "from-miel/20 to-transparent",
   },
   {
     number: "03",
-    title: ["Menos tareas manuales,", "mÃ¡s tiempo para crecer."],
+    title: ["Menos tareas manuales,", "mas tiempo para crecer."],
     description:
-      "Conectamos tus herramientas y automatizamos los procesos repetitivos de tu negocio: desde respuestas automÃ¡ticas hasta reportes y seguimiento de clientes.",
+      "Conectamos tus herramientas y automatizamos los procesos repetitivos de tu negocio: desde respuestas automaticas hasta reportes y seguimiento de clientes.",
     features: [
-      "AutomatizaciÃ³n de emails y seguimientos (Make, Zapier, n8n)",
+      "Automatizacion de emails y seguimientos (Make, Zapier, n8n)",
       "CRM y pipeline de ventas conectado a tu web",
       "Bots de WhatsApp y formularios inteligentes",
-      "Reportes automÃ¡ticos semanales",
-      "IntegraciÃ³n con tu stack actual (sin migraciÃ³n)",
+      "Reportes automaticos semanales",
+      "Integracion con tu stack actual (sin migracion)",
     ],
-    cta: "Automatizar mi negocio â†’",
+    cta: "Automatizar mi negocio ->",
     accent: "from-grafito/20 to-transparent",
   },
 ]
@@ -83,7 +83,7 @@ function ServiceContent({
         <ul className="space-y-3">
           {service.features.map((feature, index) => (
             <li key={index} className="flex items-start gap-3 text-sm text-crema/80">
-              <span className="mt-1 shrink-0 text-oro-clave">Â·</span>
+              <span className="mt-1 shrink-0 text-oro-clave">-</span>
               {feature}
             </li>
           ))}

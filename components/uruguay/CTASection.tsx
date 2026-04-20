@@ -132,7 +132,7 @@ export function CTASection({ cta }: CTASectionProps) {
                     type="tel"
                     {...register("whatsapp")}
                     className="bg-negro-mid border border-grafito/20 rounded-lg px-4 py-3 text-crema text-sm placeholder:text-grafito/40 focus:outline-none focus:border-oro-clave/50 transition-colors"
-                    placeholder="+598 XX XXX XXXX"
+                    placeholder="+598 92 395 129"
                   />
                 </div>
 

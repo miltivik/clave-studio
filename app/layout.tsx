@@ -92,8 +92,10 @@ export default function RootLayout({
       "@type": "ContactPoint",
       contactType: "sales",
       email: siteConfig.email,
+      telephone: siteConfig.phoneE164,
       availableLanguage: "Spanish",
     },
+    sameAs: [siteConfig.instagramUrl, siteConfig.whatsappUrl],
   }
 
   return (

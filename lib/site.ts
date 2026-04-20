@@ -3,6 +3,11 @@ export const siteConfig = {
   shortName: "Clave",
   url: "https://clave.studio",
   email: "hola@clave.studio",
+  phoneDisplay: "092 395 129",
+  phoneE164: "+59892395129",
+  whatsappUrl: "https://wa.me/59892395129",
+  instagramHandle: "@clavestudiodigital",
+  instagramUrl: "https://instagram.com/clavestudiodigital",
   locale: "es_419",
   defaultTitle: "Clave Studio Digital - Agencia Digital en Uruguay para Pymes",
   defaultDescription:

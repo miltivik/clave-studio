@@ -1,12 +1,13 @@
 import Link from "next/link"
 import { Logo } from "@/components/Logo"
+import { siteConfig } from "@/lib/site"
 
 const SERVICES_LINKS = [
   { label: "Desarrollo web", href: "/desarrollo-web-uruguay" },
   { label: "E-commerce", href: "/ecommerce-uruguay" },
   { label: "Automatizaciones", href: "/automatizaciones-uruguay" },
   { label: "Agencia Uruguay", href: "/agencia-digital-uruguay" },
-  { label: "Consultoría", href: "#contacto" },
+  { label: "Consultoria", href: "#contacto" },
 ]
 
 const COMPANY_LINKS = [
@@ -18,20 +19,19 @@ const COMPANY_LINKS = [
 
 function InstagramIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <rect x="2" y="2" width="20" height="20" rx="5" />
       <circle cx="12" cy="12" r="5" />
       <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-    </svg>
-  )
-}
-
-function LinkedInIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
-      <rect x="2" y="9" width="4" height="12" />
-      <circle cx="4" cy="4" r="2" />
     </svg>
   )
 }
@@ -48,58 +48,46 @@ export function Footer() {
   return (
     <footer className="bg-negro-mid border-t border-grafito/20">
       <div className="container-clave section-padding pb-8">
-        {/* Main grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
-          {/* Col 1: Brand */}
+        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           <div className="sm:col-span-2 lg:col-span-1">
-            <div className="flex items-center gap-2.5 text-oro-clave mb-4">
+            <div className="mb-4 flex items-center gap-2.5 text-oro-clave">
               <Logo size={28} />
               <span className="font-display text-lg font-medium">Clave</span>
             </div>
-            <p className="text-grafito text-sm leading-relaxed mb-6 max-w-[280px]">
+            <p className="mb-6 max-w-[280px] text-sm leading-relaxed text-grafito">
               Abrimos las puertas de tu mundo digital.
             </p>
             <div className="flex items-center gap-4">
               <a
-                href="/servicios"
+                href={siteConfig.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-grafito hover:text-oro-clave transition-colors"
-                aria-label="Servicios"
+                className="text-grafito transition-colors hover:text-oro-clave"
+                aria-label="Instagram"
               >
                 <InstagramIcon />
               </a>
               <a
-                href="/#contacto"
+                href={siteConfig.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-grafito hover:text-oro-clave transition-colors"
-                aria-label="Contacto"
-              >
-                <LinkedInIcon />
-              </a>
-              <a
-                href="mailto:hola@clave.studio"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-grafito hover:text-oro-clave transition-colors"
-                aria-label="Email"
+                className="text-grafito transition-colors hover:text-oro-clave"
+                aria-label="WhatsApp"
               >
                 <WhatsAppIcon />
               </a>
             </div>
           </div>
 
-          {/* Col 2: Servicios */}
           <div>
-            <h4 className="font-body font-semibold text-crema text-sm mb-4 tracking-wide uppercase">
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wide text-crema">
               Servicios
             </h4>
             <ul className="space-y-3">
               <li>
                 <a
                   href="/servicios"
-                  className="text-grafito hover:text-oro-clave transition-colors text-sm"
+                  className="text-sm text-grafito transition-colors hover:text-oro-clave"
                 >
                   Todos los servicios
                 </a>
@@ -108,7 +96,7 @@ export function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href.startsWith("#") ? `/${link.href}` : link.href}
-                    className="text-grafito hover:text-oro-clave transition-colors text-sm"
+                    className="text-sm text-grafito transition-colors hover:text-oro-clave"
                   >
                     {link.label}
                   </a>
@@ -117,9 +105,8 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Col 3: Empresa */}
           <div>
-            <h4 className="font-body font-semibold text-crema text-sm mb-4 tracking-wide uppercase">
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wide text-crema">
               Empresa
             </h4>
             <ul className="space-y-3">
@@ -127,7 +114,7 @@ export function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href.startsWith("#") ? `/${link.href}` : link.href}
-                    className="text-grafito hover:text-oro-clave transition-colors text-sm"
+                    className="text-sm text-grafito transition-colors hover:text-oro-clave"
                   >
                     {link.label}
                   </a>
@@ -136,24 +123,43 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Col 4: Contacto */}
           <div>
-            <h4 className="font-body font-semibold text-crema text-sm mb-4 tracking-wide uppercase">
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wide text-crema">
               Contacto
             </h4>
             <ul className="space-y-3 text-sm text-grafito">
               <li>
                 <a
-                  href="mailto:hola@clave.studio"
-                  className="hover:text-oro-clave transition-colors"
+                  href={`mailto:${siteConfig.email}`}
+                  className="transition-colors hover:text-oro-clave"
                 >
-                  hola@clave.studio
+                  {siteConfig.email}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={siteConfig.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-oro-clave"
+                >
+                  WhatsApp: {siteConfig.phoneDisplay}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={siteConfig.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-oro-clave"
+                >
+                  Instagram: {siteConfig.instagramHandle}
                 </a>
               </li>
               <li>
                 <Link
                   href="/#contacto"
-                  className="hover:text-oro-clave transition-colors"
+                  className="transition-colors hover:text-oro-clave"
                 >
                   Solicitar propuesta
                 </Link>
@@ -163,17 +169,16 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="mt-16 pt-8 border-t border-grafito/15 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-grafito/50 text-xs">
-            © 2025 Clave Studio Digital · Todos los derechos reservados
+        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-grafito/15 pt-8 sm:flex-row">
+          <p className="text-xs text-grafito/50">
+            (c) 2025 Clave Studio Digital - Todos los derechos reservados
           </p>
           <div className="flex items-center gap-6 text-xs text-grafito/50">
-            <a href="/privacidad" className="hover:text-grafito transition-colors">
-              Política de privacidad
+            <a href="/privacidad" className="transition-colors hover:text-grafito">
+              Politica de privacidad
             </a>
-            <a href="/terminos" className="hover:text-grafito transition-colors">
-              Términos de uso
+            <a href="/terminos" className="transition-colors hover:text-grafito">
+              Terminos de uso
             </a>
           </div>
         </div>
