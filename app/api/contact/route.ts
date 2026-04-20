@@ -2,10 +2,19 @@ import { NextResponse } from "next/server"
 import { Resend } from "resend"
 import { contactSchema } from "@/lib/validations"
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 export async function POST(request: Request) {
   try {
+    const resendApiKey = process.env.RESEND_API_KEY
+
+    if (!resendApiKey) {
+      console.error("Contact form error: missing RESEND_API_KEY")
+      return NextResponse.json(
+        { error: "Configuracion de correo incompleta" },
+        { status: 500 }
+      )
+    }
+
+    const resend = new Resend(resendApiKey)
     const body = await request.json()
     const parsed = contactSchema.parse(body)
 
@@ -13,13 +22,13 @@ export async function POST(request: Request) {
       web: "Sitio web",
       ecommerce: "E-commerce",
       automations: "Automatizaciones",
-      unsure: "No sé bien",
+      unsure: "No se bien",
     }
 
     await resend.emails.send({
       from: "Clave Studio <onboarding@resend.dev>",
       to: "hola@clave.studio",
-      subject: `Nueva consulta de ${parsed.name} — ${serviceLabels[parsed.service]}`,
+      subject: `Nueva consulta de ${parsed.name} - ${serviceLabels[parsed.service]}`,
       html: `
         <h2>Nueva consulta desde clave.studio</h2>
         <p><strong>Nombre:</strong> ${parsed.name}</p>
