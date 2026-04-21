@@ -1,6 +1,19 @@
 "use client"
 
-import { StaggerTestimonials, type TestimonialItem } from "@/components/ui/stagger-testimonials"
+import dynamic from "next/dynamic"
+import Image from "next/image"
+import type { TestimonialItem } from "@/components/ui/stagger-testimonials"
+import { useHasMounted } from "@/hooks/useHasMounted"
+import { useNearViewport } from "@/hooks/useNearViewport"
+import { shouldHydrateDeferredSection } from "@/lib/performance-budget"
+
+const DeferredStaggerTestimonials = dynamic(
+  () =>
+    import("@/components/ui/stagger-testimonials").then((mod) => mod.StaggerTestimonials),
+  {
+    loading: () => null,
+  }
+)
 
 const RAW_TESTIMONIALS = [
   {
@@ -9,23 +22,23 @@ const RAW_TESTIMONIALS = [
     name: "Valentina R.",
     role: "Dueña de tienda de ropa",
     location: "Buenos Aires",
-    imgSrc: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop"
+    imgSrc: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop",
   },
   {
     quote:
-      "Por fin tengo una web que me da vergüenza enseñar... ¡de lo buena que quedó! Y aparezco primero en Google.",
+      "Por fin tengo una web que me da vergüenza enseñar... de lo buena que quedó. Y aparezco primero en Google.",
     name: "Marcos T.",
     role: "Arquitecto",
     location: "Montevideo",
-    imgSrc: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop"
+    imgSrc: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop",
   },
   {
     quote:
       "Las automatizaciones nos ahorraron contratar un asistente. El seguimiento de clientes ahora es automático.",
     name: "Carolina M.",
-    role: "Consultora de RRHH",
+    role: "Consultora de RR. HH.",
     location: "Santiago",
-    imgSrc: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop"
+    imgSrc: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop",
   },
   {
     quote:
@@ -33,15 +46,15 @@ const RAW_TESTIMONIALS = [
     name: "Diego F.",
     role: "Dueño de restaurante",
     location: "Bogotá",
-    imgSrc: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop"
+    imgSrc: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop",
   },
   {
     quote:
-      "Nuestra tienda Shopify ahora vende sola. Los emails automáticos post-compra nos generan el 30% de las recomendaciones.",
+      "Nuestra tienda en Shopify ahora vende sola. Los emails automáticos postcompra nos generan el 30% de las recomendaciones.",
     name: "Luciana P.",
     role: "E-commerce de cosméticos",
     location: "CABA",
-    imgSrc: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop"
+    imgSrc: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop",
   },
   {
     quote:
@@ -49,20 +62,65 @@ const RAW_TESTIMONIALS = [
     name: "Andrés G.",
     role: "Fundador de startup",
     location: "Medellín",
-    imgSrc: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=150&fit=crop"
+    imgSrc: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=150&fit=crop",
   },
 ]
 
-// Mapeamos los datos limpios al formato que requiere el componente de UI
-const formattedTestimonials: TestimonialItem[] = RAW_TESTIMONIALS.map((t) => ({
-  testimonial: t.quote,
-  by: `${t.name}, ${t.role}`,
-  imgSrc: t.imgSrc,
+const formattedTestimonials: TestimonialItem[] = RAW_TESTIMONIALS.map((testimonial) => ({
+  testimonial: testimonial.quote,
+  by: `${testimonial.name}, ${testimonial.role}`,
+  imgSrc: testimonial.imgSrc,
 }))
 
-export function TestimonialsSection() {
+function StaticTestimonialsGrid() {
   return (
-    <section className="bg-crema section-padding overflow-hidden">
+    <div className="container-clave">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        {RAW_TESTIMONIALS.slice(0, 4).map((testimonial) => (
+          <article
+            key={testimonial.name}
+            className="rounded-2xl border border-negro-clave/5 bg-white/90 p-6 shadow-[0_18px_40px_-28px_rgba(0,0,0,0.35)]"
+          >
+            <div className="mb-4 flex items-center gap-3">
+              <Image
+                src={testimonial.imgSrc}
+                alt={testimonial.name}
+                width={56}
+                height={56}
+                className="h-14 w-14 rounded-full border border-oro-clave/15 object-cover"
+              />
+              <div>
+                <p className="font-body text-base font-semibold text-negro-clave">
+                  {testimonial.name}
+                </p>
+                <p className="text-sm text-grafito">
+                  {testimonial.role} · {testimonial.location}
+                </p>
+              </div>
+            </div>
+            <div className="mb-3 text-sm text-oro-clave">★★★★★</div>
+            <blockquote className="text-sm leading-relaxed text-negro-clave/80">
+              &ldquo;{testimonial.quote}&rdquo;
+            </blockquote>
+          </article>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+export function TestimonialsSection() {
+  const hasMounted = useHasMounted()
+  const [sectionRef, isNearViewport] = useNearViewport<HTMLElement>({
+    rootMargin: "360px 0px",
+  })
+  const shouldHydrateCarousel = shouldHydrateDeferredSection({
+    hasMounted,
+    isNearViewport,
+  })
+
+  return (
+    <section ref={sectionRef} className="bg-crema section-padding overflow-hidden">
       <div className="container-clave mb-12 lg:mb-16">
         <div className="text-center">
           <span className="text-oro-clave font-body text-sm font-medium tracking-widest uppercase mb-4 block">
@@ -75,7 +133,6 @@ export function TestimonialsSection() {
         </div>
       </div>
 
-      {/* JSON-LD for Professional Service and Reviews */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -88,21 +145,21 @@ export function TestimonialsSection() {
             telephone: "",
             address: {
               "@type": "PostalAddress",
-              "addressLocality": "LATAM",
-              "addressCountry": "AR"
+              addressLocality: "LATAM",
+              addressCountry: "AR",
             },
             aggregateRating: {
               "@type": "AggregateRating",
               ratingValue: "5",
               reviewCount: RAW_TESTIMONIALS.length.toString(),
             },
-            review: RAW_TESTIMONIALS.map((t) => ({
+            review: RAW_TESTIMONIALS.map((testimonial) => ({
               "@type": "Review",
               author: {
                 "@type": "Person",
-                name: t.name,
+                name: testimonial.name,
               },
-              reviewBody: t.quote,
+              reviewBody: testimonial.quote,
               reviewRating: {
                 "@type": "Rating",
                 ratingValue: "5",
@@ -113,8 +170,11 @@ export function TestimonialsSection() {
       />
 
       <div className="flex flex-col gap-6">
-        {/* Aquí insertamos el componente importado desde /components/ui */}
-        <StaggerTestimonials testimonials={formattedTestimonials} />
+        {shouldHydrateCarousel ? (
+          <DeferredStaggerTestimonials testimonials={formattedTestimonials} />
+        ) : (
+          <StaticTestimonialsGrid />
+        )}
       </div>
     </section>
   )

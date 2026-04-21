@@ -76,7 +76,7 @@ export default function AgenciaDigitalUruguayPage() {
           <div className="container-clave">
             <div className="max-w-4xl mx-auto">
               <h2 className="font-display text-[clamp(1.8rem,4vw,3rem)] text-crema font-light mb-12">
-                Por que trabajar con un estudio con foco en Uruguay
+                Por qué trabajar con un estudio con foco en Uruguay
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {content.whyUruguay.map((item) => (

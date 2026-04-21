@@ -7,7 +7,7 @@ export const contentType = ogImageContentType
 export default function OpenGraphImage() {
   return createOgImage({
     eyebrow: "Automatizaciones Uruguay",
-    title: "Menos tareas manuales, mas tiempo para crecer.",
+    title: "Menos tareas manuales, más tiempo para crecer.",
     description: "Conectamos CRM, WhatsApp y email para que los procesos repetitivos fluyan mejor.",
   })
 }

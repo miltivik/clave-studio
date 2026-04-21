@@ -73,6 +73,31 @@ body {
   overflow-x: hidden;
 }
 
+@keyframes social-proof-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.social-proof-marquee {
+  overflow: hidden;
+}
+
+.social-proof-track {
+  display: flex;
+  width: max-content;
+  animation: social-proof-marquee 30s linear infinite;
+  will-change: transform;
+}
+
+.social-proof-marquee:hover .social-proof-track {
+  animation-play-state: paused;
+}
+
 /* ========================================
    Typography Utilities
    ======================================== */
@@ -197,5 +222,10 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .social-proof-track {
+    animation: none;
+    transform: none;
   }
 }

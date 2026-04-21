@@ -8,7 +8,8 @@ import {
   type ReactNode,
   type RefObject,
 } from "react"
-import Lenis from "lenis"
+import type Lenis from "lenis"
+import { shouldEnableLenis } from "@/lib/performance-budget"
 
 const LenisContext = createContext<RefObject<Lenis | null> | null>(null)
 
@@ -21,26 +22,39 @@ export function LenisProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    if (prefersReducedMotion) return
+    const isDesktop = window.matchMedia("(min-width: 1024px)").matches
 
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-    })
+    if (!shouldEnableLenis({ isDesktop, prefersReducedMotion })) return
 
-    lenisRef.current = lenis
+    let disposed = false
     let frameId = 0
 
-    function raf(time: number) {
-      lenis.raf(time)
+    async function initLenis() {
+      const { default: LenisConstructor } = await import("lenis")
+      if (disposed) return
+
+      const lenis = new LenisConstructor({
+        duration: 1.2,
+        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+      })
+
+      lenisRef.current = lenis
+
+      function raf(time: number) {
+        lenis.raf(time)
+        frameId = requestAnimationFrame(raf)
+      }
+
       frameId = requestAnimationFrame(raf)
     }
-    frameId = requestAnimationFrame(raf)
+
+    void initLenis()
 
     return () => {
+      disposed = true
       cancelAnimationFrame(frameId)
-      lenis.destroy()
+      lenisRef.current?.destroy()
       lenisRef.current = null
     }
   }, [])

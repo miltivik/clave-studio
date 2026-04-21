@@ -211,7 +211,7 @@ export function CTAFinal() {
                   htmlFor="service"
                   className="text-xs uppercase tracking-wider text-crema/60"
                 >
-                  Que necesitas? *
+                  ¿Qué necesitás? *
                 </label>
                 <select
                   id="service"
@@ -219,12 +219,12 @@ export function CTAFinal() {
                   className="cursor-pointer appearance-none rounded-lg border border-grafito/20 bg-negro-mid px-4 py-3 text-sm text-crema transition-colors focus:border-oro-clave/50 focus:outline-none"
                 >
                   <option value="" disabled>
-                    Selecciona una opcion
+                    Seleccioná una opción
                   </option>
                   <option value="web">Sitio web</option>
                   <option value="ecommerce">E-commerce</option>
                   <option value="automations">Automatizaciones</option>
-                  <option value="unsure">No se bien</option>
+                  <option value="unsure">No sé bien</option>
                 </select>
                 {errors.service && (
                   <span className="text-xs text-red-400">{errors.service.message}</span>
@@ -244,7 +244,7 @@ export function CTAFinal() {
                 {...register("message")}
                 rows={4}
                 className="resize-none rounded-lg border border-grafito/20 bg-negro-mid px-4 py-3 text-sm text-crema transition-colors placeholder:text-grafito/40 focus:border-oro-clave/50 focus:outline-none"
-                placeholder="Describi brevemente tu proyecto, negocio y que estas buscando..."
+                placeholder="Describí brevemente tu proyecto, negocio y qué estás buscando..."
               />
               {errors.message && (
                 <span className="text-xs text-red-400">{errors.message.message}</span>
@@ -256,12 +256,12 @@ export function CTAFinal() {
               className="btn-primary mt-2 w-full justify-center text-center"
               disabled={status === "submitting"}
             >
-              {status === "submitting" ? "Enviando..." : "Enviar mensaje ->"}
+              {status === "submitting" ? "Enviando..." : "Enviar mensaje →"}
             </button>
 
             {status === "error" && (
               <p className="text-center text-sm text-red-400">
-                Hubo un error al enviar. Intenta de nuevo.
+                Hubo un error al enviar. Intentá de nuevo.
               </p>
             )}
           </motion.form>

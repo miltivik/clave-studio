@@ -32,6 +32,8 @@ yarn-error.log*
 .codex-*.log
 .measure-*.log
 .tmp-dev-*.log
+/reports/lighthouse/
+/reports/qa/
 
 # env files (can opt-in for committing if needed)
 .env*

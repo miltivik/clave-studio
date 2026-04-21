@@ -1,11 +1,3 @@
-"use client"
-
-import { useRef, useEffect } from "react"
-import { gsap } from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-
-gsap.registerPlugin(ScrollTrigger)
-
 const STEPS = [
   {
     number: "01",
@@ -38,102 +30,40 @@ const STEPS = [
 ]
 
 export function ProcessSection() {
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const lineRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    if (prefersReducedMotion || !sectionRef.current) return
-
-    const ctx = gsap.context(() => {
-      // Animate the connecting line
-      if (lineRef.current) {
-        gsap.fromTo(
-          lineRef.current,
-          { scaleX: 0 },
-          {
-            scaleX: 1,
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: "top 70%",
-              end: "center center",
-              scrub: 1,
-            },
-          }
-        )
-      }
-
-      // Stagger the step nodes
-      const nodes = gsap.utils.toArray<HTMLElement>(".process-step")
-      nodes.forEach((node, i) => {
-        gsap.from(node, {
-          opacity: 0,
-          y: 40,
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: `${20 + i * 12}% 80%`,
-            end: `${30 + i * 12}% 60%`,
-            scrub: 1,
-          },
-        })
-      })
-    }, sectionRef)
-
-    return () => ctx.revert()
-  }, [])
-
   return (
-    <section id="proceso" ref={sectionRef} className="bg-crema section-padding overflow-hidden">
+    <section id="proceso" className="section-padding overflow-hidden bg-crema">
       <div className="container-clave">
-        {/* Header */}
-        <div className="text-center mb-16 lg:mb-24">
-          <span className="text-oro-clave font-body text-sm font-medium tracking-widest uppercase mb-4 block">
+        <div className="mb-16 text-center lg:mb-24">
+          <span className="mb-4 block font-body text-sm font-medium uppercase tracking-widest text-oro-clave">
             Proceso
           </span>
-          <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] text-negro-clave font-light leading-tight">
+          <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] font-light leading-tight text-negro-clave">
             De la idea al lanzamiento
             <br />
-            <span className="text-oro-clave italic">en 21 días.</span>
+            <span className="italic text-oro-clave">en 21 días.</span>
           </h2>
         </div>
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Connecting line (desktop) */}
-          <div
-            ref={lineRef}
-            className="hidden lg:block absolute top-[60px] left-[10%] right-[10%] h-px bg-oro-clave/30 origin-left"
-          />
-
-          {/* Steps grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
-            {STEPS.map((step) => (
-              <div key={step.number} className="process-step relative">
-                {/* Node dot (desktop) */}
-                <div className="hidden lg:flex items-center justify-center w-8 h-8 rounded-full bg-oro-clave/10 border-2 border-oro-clave mb-6 mx-auto">
-                  <div className="w-2 h-2 rounded-full bg-oro-clave" />
-                </div>
-
-                {/* Card */}
-                <div className="bg-white/60 backdrop-blur-sm rounded-xl p-6 lg:p-8 border border-negro-clave/5 hover:border-oro-clave/20 transition-colors">
-                  <div className="flex items-center gap-3 mb-4 lg:justify-center">
-                    <span className="font-mono text-oro-clave text-xs font-medium">
-                      {step.number}
-                    </span>
-                    <span className="text-grafito text-xs bg-negro-clave/5 px-2.5 py-1 rounded-full">
-                      {step.days}
-                    </span>
-                  </div>
-                  <h3 className="font-display text-xl lg:text-2xl text-negro-clave font-normal mb-3 lg:text-center">
-                    {step.title}
-                  </h3>
-                  <p className="text-grafito text-sm leading-relaxed lg:text-center">
-                    {step.description}
-                  </p>
-                </div>
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+          {STEPS.map((step) => (
+            <article
+              key={step.number}
+              className="rounded-xl border border-negro-clave/5 bg-white/60 p-6 backdrop-blur-sm transition-colors hover:border-oro-clave/20 lg:p-8"
+            >
+              <div className="mb-4 flex items-center gap-3 lg:justify-center">
+                <span className="font-mono text-xs font-medium text-oro-clave">{step.number}</span>
+                <span className="rounded-full bg-negro-clave/5 px-2.5 py-1 text-xs text-grafito">
+                  {step.days}
+                </span>
               </div>
-            ))}
-          </div>
+              <h3 className="mb-3 font-display text-xl font-normal text-negro-clave lg:text-center lg:text-2xl">
+                {step.title}
+              </h3>
+              <p className="text-sm leading-relaxed text-grafito lg:text-center">
+                {step.description}
+              </p>
+            </article>
+          ))}
         </div>
       </div>
     </section>

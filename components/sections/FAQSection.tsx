@@ -5,44 +5,44 @@ import { AnimatePresence, motion } from "framer-motion"
 
 const FAQS = [
   {
-    question: "En cuanto tiempo me entregan el proyecto?",
+    question: "¿En cuánto tiempo me entregan el proyecto?",
     answer:
-      "Nuestros proyectos tienen un plazo promedio de 18 dias desde que arrancamos. Antes de empezar te damos una fecha de entrega comprometida por escrito.",
+      "Nuestros proyectos tienen un plazo promedio de 18 días desde que arrancamos. Antes de empezar te damos una fecha de entrega comprometida por escrito.",
   },
   {
-    question: "Necesito tener el diseno listo para empezar?",
+    question: "¿Necesito tener el diseño listo para empezar?",
     answer:
-      "No. Nosotros nos encargamos del diseno completo. Vos solo nos contas tu negocio y tus objetivos, y nosotros creamos la propuesta visual.",
+      "No. Nosotros nos encargamos del diseño completo. Vos solo nos contás tu negocio y tus objetivos, y nosotros creamos la propuesta visual.",
   },
   {
-    question: "Que pasa si no me gusta como quedo?",
+    question: "¿Qué pasa si no me gusta cómo quedó?",
     answer:
-      "El proceso incluye dos rondas de revision sin costo. Trabajamos hasta que estes conforme con el resultado.",
+      "El proceso incluye dos rondas de revisión sin costo. Trabajamos hasta que estés conforme con el resultado.",
   },
   {
-    question: "Puedo editar el sitio yo mismo despues?",
+    question: "¿Puedo editar el sitio yo mismo después?",
     answer:
-      "Si. Todos nuestros proyectos incluyen un panel de administracion sencillo. Y te capacitamos para usarlo antes del lanzamiento.",
+      "Sí. Todos nuestros proyectos incluyen un panel de administración sencillo. Y te capacitamos para usarlo antes del lanzamiento.",
   },
   {
-    question: "Trabajan con clientes fuera de Uruguay?",
+    question: "¿Trabajan con clientes fuera de Uruguay?",
     answer:
-      "Si. Hoy tenemos foco comercial en Uruguay, pero tambien trabajamos con clientes de otros paises de LATAM cuando el proyecto encaja bien. Las reuniones se coordinan por Zoom, en horario Uruguay.",
+      "Sí. Hoy tenemos foco comercial en Uruguay, pero también trabajamos con clientes de otros países de LATAM cuando el proyecto encaja bien. Las reuniones se coordinan por Zoom, en horario Uruguay.",
   },
   {
-    question: "Que plataformas usan para los e-commerce?",
+    question: "¿Qué plataformas usan para los e-commerce?",
     answer:
-      "Dependiendo del proyecto usamos Shopify, WooCommerce o desarrollo custom. Te recomendamos la que mejor se adapte a tu negocio, presupuesto y operacion.",
+      "Dependiendo del proyecto usamos Shopify, WooCommerce o desarrollo custom. Te recomendamos la que mejor se adapte a tu negocio, presupuesto y operación.",
   },
   {
-    question: "Que es exactamente una automatizacion?",
+    question: "¿Qué es exactamente una automatización?",
     answer:
-      "Es conectar tus herramientas para que ciertas tareas sucedan solas: cuando alguien completa un formulario, te llega un WhatsApp, se agrega al CRM y recibe un email de bienvenida automaticamente. Sin que hagas nada.",
+      "Es conectar tus herramientas para que ciertas tareas sucedan solas: cuando alguien completa un formulario, te llega un WhatsApp, se agrega al CRM y recibe un email de bienvenida automáticamente. Sin que hagas nada.",
   },
   {
-    question: "Tienen soporte despues del lanzamiento?",
+    question: "¿Tienen soporte después del lanzamiento?",
     answer:
-      "Todos los planes incluyen soporte post-lanzamiento. El tiempo varia segun el plan, y despues del periodo inicial podemos seguir con mantenimiento mensual o mejoras evolutivas.",
+      "Todos los planes incluyen soporte post-lanzamiento. El tiempo varía según el plan, y después del período inicial podemos seguir con mantenimiento mensual o mejoras evolutivas.",
   },
 ]
 

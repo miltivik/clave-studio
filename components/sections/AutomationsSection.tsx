@@ -166,7 +166,7 @@ export function AutomationsSection() {
                 <>
                   Tu negocio funcionando
                   <br />
-                  <span className="text-oro-clave italic">mientras dormis.</span>
+                  <span className="text-oro-clave italic">mientras dormís.</span>
                 </>
               }
               className="mb-6"
@@ -198,7 +198,7 @@ export function AutomationsSection() {
               href="#contacto"
               className="btn-primary w-full self-stretch justify-center whitespace-normal text-center sm:w-auto sm:self-start sm:justify-start sm:whitespace-nowrap sm:text-left"
             >
-              {"Contame que proceso queres automatizar ->"}
+              Contame qué proceso querés automatizar →
             </a>
           </FadeIn>
 

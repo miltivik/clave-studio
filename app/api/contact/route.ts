@@ -9,7 +9,7 @@ export async function POST(request: Request) {
     if (!resendApiKey) {
       console.error("Contact form error: missing RESEND_API_KEY")
       return NextResponse.json(
-        { error: "Configuracion de correo incompleta" },
+        { error: "Configuración de correo incompleta" },
         { status: 500 }
       )
     }
@@ -22,7 +22,7 @@ export async function POST(request: Request) {
       web: "Sitio web",
       ecommerce: "E-commerce",
       automations: "Automatizaciones",
-      unsure: "No se bien",
+      unsure: "No sé bien",
     }
 
     await resend.emails.send({

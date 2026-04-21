@@ -30,7 +30,7 @@ export function ServiceHubSection({ services }: ServiceHubSectionProps) {
                 </h3>
                 <p className="text-grafito text-sm leading-relaxed mb-4">{service.description}</p>
                 <span className="text-oro-clave text-sm font-medium group-hover:underline">
-                  Ver mas
+                  Ver más
                 </span>
               </Link>
             ))}

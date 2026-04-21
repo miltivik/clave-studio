@@ -8,6 +8,6 @@ export default function OpenGraphImage() {
   return createOgImage({
     eyebrow: "E-commerce Uruguay",
     title: "Tu tienda online, lista para vender.",
-    description: "Armamos tu e-commerce con catalogo, pagos, envios y un checkout orientado a conversion.",
+    description: "Armamos tu e-commerce con catálogo, pagos, envíos y un checkout orientado a conversión.",
   })
 }

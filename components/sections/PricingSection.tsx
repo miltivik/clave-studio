@@ -1,7 +1,5 @@
-"use client"
-
-import { FadeIn } from "@/components/ui/FadeIn"
 import { SectionHeader } from "@/components/ui/SectionHeader"
+
 const PLANS = [
   {
     name: "Presencia",
@@ -50,66 +48,57 @@ const PLANS = [
 
 export function PricingSection() {
   return (
-    <section id="precios" className="bg-negro-clave section-padding min-h-screen flex flex-col justify-center">
+    <section
+      id="precios"
+      className="section-padding flex min-h-screen flex-col justify-center bg-negro-clave"
+    >
       <div className="container-clave w-full">
-        {/* Header */}
         <SectionHeader
           badge="Precios"
           title={
             <>
               Inversión clara,
               <br />
-              <span className="text-oro-clave italic">sin sorpresas.</span>
+              <span className="italic text-oro-clave">sin sorpresas.</span>
             </>
           }
-          className="text-center mb-20"
+          className="mb-20 text-center"
         />
-        {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10 max-w-[1200px] mx-auto">
-          {PLANS.map((plan, i) => (
-            <FadeIn
+
+        <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+          {PLANS.map((plan) => (
+            <article
               key={plan.name}
-              delay={i * 0.1}
-              duration={0.5}
-              disableOnMobile
-              className={`@container relative rounded-2xl p-8 lg:p-10 flex flex-col ${
+              className={`relative flex flex-col rounded-2xl p-8 lg:p-10 ${
                 plan.featured
-                  ? "bg-negro-mid border-2 border-oro-clave lg:scale-105 z-10 shadow-[0_0_60px_rgba(201,137,10,0.1)]"
-                  : "bg-negro-mid/60 border border-grafito/15"
+                  ? "z-10 border-2 border-oro-clave bg-negro-mid shadow-[0_0_60px_rgba(201,137,10,0.1)] lg:scale-105"
+                  : "border border-grafito/15 bg-negro-mid/60"
               }`}
             >
-              {/* Badge */}
               {plan.badge && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="px-4 py-1.5 rounded-full bg-oro-clave text-negro-clave text-xs font-semibold whitespace-nowrap">
+                <div className="absolute left-1/2 top-[-12px] -translate-x-1/2">
+                  <span className="whitespace-nowrap rounded-full bg-oro-clave px-4 py-1.5 text-xs font-semibold text-negro-clave">
                     {plan.badge}
                   </span>
                 </div>
               )}
 
-              {/* Plan name */}
-              <h3 className="font-display text-2xl text-crema font-normal mb-2">{plan.name}</h3>
-              <p className="text-grafito text-sm mb-6">{plan.target}</p>
+              <h3 className="mb-2 font-display text-2xl font-normal text-crema">{plan.name}</h3>
+              <p className="mb-6 text-sm text-grafito">{plan.target}</p>
 
-              {/* Price */}
               <div className="mb-8">
-                <div className="flex items-baseline gap-1">
-                  <span className="text-grafito text-sm">Desde</span>
-                </div>
-                <div className="flex items-baseline gap-1.5 mt-1">
-                  <span className="font-mono text-4xl font-medium text-crema">
-                    ${plan.price}
-                  </span>
-                  <span className="text-grafito text-sm">USD</span>
+                <span className="text-sm text-grafito">Desde</span>
+                <div className="mt-1 flex items-baseline gap-1.5">
+                  <span className="font-mono text-4xl font-medium text-crema">${plan.price}</span>
+                  <span className="text-sm text-grafito">USD</span>
                 </div>
               </div>
 
-              {/* Features */}
-              <ul className="space-y-3 mb-8 flex-1">
+              <ul className="mb-8 flex-1 space-y-3">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3 text-sm text-crema/80">
                     <svg
-                      className="w-4 h-4 text-oro-clave mt-0.5 shrink-0"
+                      className="mt-0.5 h-4 w-4 shrink-0 text-oro-clave"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -122,7 +111,6 @@ export function PricingSection() {
                 ))}
               </ul>
 
-              {/* CTA */}
               <a
                 href="#contacto"
                 aria-label={`Contratar plan ${plan.name} por ${plan.price} USD`}
@@ -134,12 +122,11 @@ export function PricingSection() {
               >
                 {plan.cta}
               </a>
-            </FadeIn>
+            </article>
           ))}
         </div>
 
-        {/* Legal note */}
-        <p className="text-center text-grafito/60 text-xs mt-10 max-w-[600px] mx-auto">
+        <p className="mx-auto mt-10 max-w-[600px] text-center text-xs text-grafito/60">
           Los precios son orientativos. Cada proyecto se presupuesta a medida después de una
           llamada de descubrimiento gratuita.
         </p>

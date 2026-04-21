@@ -13,6 +13,6 @@ export default function OpenGraphImage() {
     eyebrow: "Agencia digital para pymes",
     title: "Web, e-commerce y automatizaciones que convierten.",
     description:
-      "Desarrollo web premium para negocios de LATAM que necesitan verse mejor, vender mas y crecer con una base tecnica solida.",
+      "Desarrollo web premium para negocios de LATAM que necesitan verse mejor, vender más y crecer con una base técnica sólida.",
   })
 }

@@ -12,45 +12,45 @@ const SERVICES = [
     number: "01",
     title: ["Sitios web que", "trabajan por vos."],
     description:
-      "Disenamos y desarrollamos tu presencia digital desde cero: rapida, visible en Google y pensada para convertir visitantes en clientes.",
+      "Diseñamos y desarrollamos tu presencia digital desde cero: rápida, visible en Google y pensada para convertir visitantes en clientes.",
     features: [
-      "Diseno UI/UX personalizado",
-      "Desarrollo Next.js (carga en menos de 2 segundos)",
-      "SEO tecnico desde el dia 1",
-      "Panel de administracion para que edites vos mismo",
+      "Diseño UI/UX personalizado",
+      "Desarrollo Next.js con base técnica sólida",
+      "SEO técnico desde el día 1",
+      "Panel de administración para que edites vos mismo",
       "3 meses de soporte incluido",
     ],
-    cta: "Ver proyectos web ->",
+    cta: "Ver proyectos web →",
     accent: "from-oro-clave/20 to-transparent",
   },
   {
     number: "02",
     title: ["Tu tienda online,", "lista para vender."],
     description:
-      "Armamos tu e-commerce con todo lo necesario para empezar a vender online: catalogo, pagos, envios y una experiencia de compra que genera confianza.",
+      "Armamos tu e-commerce con todo lo necesario para empezar a vender online: catálogo, pagos, envíos y una experiencia de compra que genera confianza.",
     features: [
       "Tienda con Shopify, WooCommerce o custom",
-      "Integracion de medios de pago LATAM (Mercado Pago, PayU, Stripe)",
-      "Gestion de stock e inventario",
-      "Emails automaticos de compra y seguimiento",
-      "Optimizacion de checkout para reducir abandono",
+      "Integración de medios de pago LATAM",
+      "Gestión de stock e inventario",
+      "Emails automáticos de compra y seguimiento",
+      "Optimización de checkout para reducir abandono",
     ],
-    cta: "Quiero mi tienda online ->",
+    cta: "Quiero mi tienda online →",
     accent: "from-miel/20 to-transparent",
   },
   {
     number: "03",
-    title: ["Menos tareas manuales,", "mas tiempo para crecer."],
+    title: ["Menos tareas manuales,", "más tiempo para crecer."],
     description:
-      "Conectamos tus herramientas y automatizamos los procesos repetitivos de tu negocio: desde respuestas automaticas hasta reportes y seguimiento de clientes.",
+      "Conectamos tus herramientas y automatizamos los procesos repetitivos de tu negocio: desde respuestas automáticas hasta reportes y seguimiento de clientes.",
     features: [
-      "Automatizacion de emails y seguimientos (Make, Zapier, n8n)",
+      "Automatización de emails y seguimientos",
       "CRM y pipeline de ventas conectado a tu web",
       "Bots de WhatsApp y formularios inteligentes",
-      "Reportes automaticos semanales",
-      "Integracion con tu stack actual (sin migracion)",
+      "Reportes automáticos semanales",
+      "Integración con tu stack actual sin migraciones forzadas",
     ],
-    cta: "Automatizar mi negocio ->",
+    cta: "Automatizar mi negocio →",
     accent: "from-grafito/20 to-transparent",
   },
 ]
@@ -81,8 +81,8 @@ function ServiceContent({
       <div className="flex flex-col gap-6">
         <p className="text-lg leading-relaxed text-grafito">{service.description}</p>
         <ul className="space-y-3">
-          {service.features.map((feature, index) => (
-            <li key={index} className="flex items-start gap-3 text-sm text-crema/80">
+          {service.features.map((feature) => (
+            <li key={feature} className="flex items-start gap-3 text-sm text-crema/80">
               <span className="mt-1 shrink-0 text-oro-clave">-</span>
               {feature}
             </li>
@@ -112,7 +112,7 @@ export function ServicesSection() {
 
     const panels = gsap.utils.toArray<HTMLElement>(".service-panel")
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
+      const timeline = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
@@ -140,7 +140,7 @@ export function ServicesSection() {
       panels.forEach((panel, index) => {
         if (index === 0) return
 
-        tl.to(
+        timeline.to(
           panels[index - 1],
           {
             yPercent: -20,
@@ -151,7 +151,7 @@ export function ServicesSection() {
           `panel${index}`
         )
 
-        tl.fromTo(
+        timeline.fromTo(
           panel,
           { yPercent: 100, opacity: 0 },
           {

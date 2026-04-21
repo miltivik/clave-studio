@@ -175,10 +175,10 @@ export function Footer() {
           </p>
           <div className="flex items-center gap-6 text-xs text-grafito/50">
             <a href="/privacidad" className="transition-colors hover:text-grafito">
-              Politica de privacidad
+              Política de privacidad
             </a>
             <a href="/terminos" className="transition-colors hover:text-grafito">
-              Terminos de uso
+              Términos de uso
             </a>
           </div>
         </div>

@@ -11,9 +11,9 @@ export const siteConfig = {
   locale: "es_419",
   defaultTitle: "Clave Studio Digital - Agencia Digital en Uruguay para Pymes",
   defaultDescription:
-    "Estudio digital con foco en Uruguay. Creamos sitios web, tiendas online y automatizaciones para pymes que necesitan vender mejor, verse bien en Google y operar con mas claridad.",
+    "Estudio digital con foco en Uruguay. Creamos sitios web, tiendas online y automatizaciones para pymes que necesitan vender mejor, verse bien en Google y operar con más claridad.",
   ogDescription:
-    "Desarrollo web, e-commerce y automatizaciones para pymes en Uruguay, con soporte para equipos de la region.",
+    "Desarrollo web, e-commerce y automatizaciones para pymes en Uruguay, con soporte para equipos de la región.",
   keywords: [
     "agencia digital uruguay",
     "desarrollo web uruguay",

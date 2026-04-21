@@ -31,7 +31,7 @@ export default function Home() {
           <div className="container-clave">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="font-display text-[clamp(1.8rem,4vw,3rem)] text-crema font-light mb-6">
-                Buscas una agencia digital en Uruguay?
+                ¿Buscás una agencia digital en Uruguay?
               </h2>
               <p className="text-grafito text-lg mb-8 max-w-[600px] mx-auto">
                 Somos un estudio especializado en desarrollo web, e-commerce y automatizaciones para pymes uruguayas.

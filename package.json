@@ -10,7 +10,10 @@
     "dev:turbo": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:perf-tooling": "node --test scripts/perf-lib.test.mjs scripts/home-performance.test.mjs",
+    "perf": "pnpm perf:mobile",
+    "perf:mobile": "pnpm build && node scripts/perf-audit.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
@@ -40,8 +43,10 @@
     "@types/react-dom": "^19",
     "@types/three": "^0.183.1",
     "babel-plugin-react-compiler": "1.0.0",
+    "chrome-launcher": "^1.2.1",
     "eslint": "^9",
     "eslint-config-next": "16.2.2",
+    "lighthouse": "^13.1.0",
     "puppeteer": "^24.40.0",
     "tailwindcss": "^4",
     "typescript": "^5"

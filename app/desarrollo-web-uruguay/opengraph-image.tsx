@@ -8,6 +8,6 @@ export default function OpenGraphImage() {
   return createOgImage({
     eyebrow: "Desarrollo Web Uruguay",
     title: "Sitios web que trabajan por vos.",
-    description: "Disenamos y desarrollamos tu presencia digital en Uruguay: rapida y visible en Google.",
+    description: "Diseñamos y desarrollamos tu presencia digital en Uruguay: rápida y visible en Google.",
   })
 }
