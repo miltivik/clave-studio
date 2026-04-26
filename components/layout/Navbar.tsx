@@ -26,6 +26,7 @@ export function Navbar() {
   const [open, setOpen] = React.useState(false)
   const scrolled = useScroll(10)
   const pathname = usePathname()
+  const menuButtonRef = React.useRef<HTMLButtonElement>(null)
 
   React.useEffect(() => {
     if (open) {
@@ -33,14 +34,34 @@ export function Navbar() {
     } else {
       document.body.style.overflow = ""
     }
-
     return () => {
       document.body.style.overflow = ""
     }
   }, [open])
 
+  React.useEffect(() => {
+    const inertTargets = document.querySelectorAll("main, footer")
+    if (open) {
+      inertTargets.forEach((el) => el.setAttribute("inert", ""))
+    } else {
+      inertTargets.forEach((el) => el.removeAttribute("inert"))
+    }
+    return () => {
+      inertTargets.forEach((el) => el.removeAttribute("inert"))
+    }
+  }, [open])
+
   function closeMenu() {
+    if (open) {
+      menuButtonRef.current?.focus()
+    }
     setOpen(false)
+  }
+
+  function handleMenuKeyDown(event: React.KeyboardEvent) {
+    if (event.key === "Escape" && open) {
+      closeMenu()
+    }
   }
 
   return (
@@ -117,17 +138,23 @@ export function Navbar() {
         </div>
 
         <Button
+          ref={menuButtonRef}
           size="icon"
           variant="ghost"
           onClick={() => setOpen(!open)}
+          onKeyDown={handleMenuKeyDown}
           className="lg:hidden text-[var(--color-oro-clave)] hover:text-[var(--color-miel)] hover:bg-transparent"
           aria-label={open ? "Cerrar menu" : "Abrir menu"}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
         >
           <MenuToggleIcon open={open} className="size-6" duration={300} />
         </Button>
         </nav>
 
       <div
+        id="mobile-menu"
+        onKeyDown={handleMenuKeyDown}
         className={cn(
           "bg-[var(--color-negro-mid)] fixed top-[72px] right-0 bottom-0 left-0 z-50 flex flex-col overflow-hidden lg:hidden",
           open ? "block" : "hidden",
