@@ -1,14 +1,14 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { motion } from "framer-motion"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { contactSchema, type ContactFormData } from "@/lib/validations"
 import { Logo } from "@/components/Logo"
+import { ContactFormFields } from "@/components/contact/ContactFormFields"
+import { ContactSuccess } from "@/components/contact/ContactSuccess"
 import { useHasMounted } from "@/hooks/useHasMounted"
+import { useContactForm } from "@/hooks/useContactForm"
 import { useMediaQuery } from "@/hooks/useMediaQuery"
 import { useReducedMotion } from "@/hooks/useReducedMotion"
 
@@ -17,20 +17,24 @@ gsap.registerPlugin(ScrollTrigger)
 export function CTAFinal() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const keyRef = useRef<HTMLDivElement>(null)
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle")
   const hasMounted = useHasMounted()
   const isMobile = useMediaQuery("(max-width: 767px)")
   const prefersReducedMotion = useReducedMotion()
   const shouldReduceMotion = !hasMounted || isMobile || prefersReducedMotion
-
   const {
+    errors,
+    formMessage,
+    isSubmitDisabled,
     register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<ContactFormData>({
-    resolver: zodResolver(contactSchema),
-  })
+    status,
+    submitContactForm,
+    turnstileRenderKey,
+    turnstileSiteKey,
+    turnstileToken,
+    handleTurnstileError,
+    handleTurnstileExpire,
+    handleTurnstileVerify,
+  } = useContactForm()
 
   useEffect(() => {
     if (shouldReduceMotion || !sectionRef.current) return
@@ -62,22 +66,6 @@ export function CTAFinal() {
 
     return () => ctx.revert()
   }, [shouldReduceMotion])
-
-  const onSubmit = async (data: ContactFormData) => {
-    setStatus("submitting")
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      })
-      if (!res.ok) throw new Error("Error al enviar")
-      setStatus("success")
-      reset()
-    } catch {
-      setStatus("error")
-    }
-  }
 
   return (
     <section
@@ -122,23 +110,11 @@ export function CTAFinal() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-oro-clave/10">
-              <svg
-                className="h-8 w-8 text-oro-clave"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <h3 className="mb-2 font-display text-2xl text-crema">Mensaje enviado</h3>
-            <p className="text-grafito">Te respondemos en menos de 24 horas.</p>
+            <ContactSuccess />
           </motion.div>
         ) : (
           <motion.form
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={submitContactForm}
             className="space-y-5"
             initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
             whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
@@ -149,121 +125,20 @@ export function CTAFinal() {
               delay: shouldReduceMotion ? 0 : 0.2,
             }}
           >
-            <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-              <div className="flex flex-col gap-1.5">
-                <label
-                  htmlFor="name"
-                  className="text-xs uppercase tracking-wider text-crema/60"
-                >
-                  Nombre completo *
-                </label>
-                <input
-                  id="name"
-                  type="text"
-                  {...register("name")}
-                  className="rounded-lg border border-grafito/20 bg-negro-mid px-4 py-3 text-sm text-crema transition-colors placeholder:text-grafito/40 focus:border-oro-clave/50 focus:outline-none"
-                  placeholder="Tu nombre"
-                />
-                {errors.name && (
-                  <span className="text-xs text-red-400">{errors.name.message}</span>
-                )}
-              </div>
-
-              <div className="flex flex-col gap-1.5">
-                <label
-                  htmlFor="email"
-                  className="text-xs uppercase tracking-wider text-crema/60"
-                >
-                  Email *
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  {...register("email")}
-                  className="rounded-lg border border-grafito/20 bg-negro-mid px-4 py-3 text-sm text-crema transition-colors placeholder:text-grafito/40 focus:border-oro-clave/50 focus:outline-none"
-                  placeholder="tu@email.com"
-                />
-                {errors.email && (
-                  <span className="text-xs text-red-400">{errors.email.message}</span>
-                )}
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-              <div className="flex flex-col gap-1.5">
-                <label
-                  htmlFor="whatsapp"
-                  className="text-xs uppercase tracking-wider text-crema/60"
-                >
-                  WhatsApp (opcional)
-                </label>
-                <input
-                  id="whatsapp"
-                  type="tel"
-                  {...register("whatsapp")}
-                  className="rounded-lg border border-grafito/20 bg-negro-mid px-4 py-3 text-sm text-crema transition-colors placeholder:text-grafito/40 focus:border-oro-clave/50 focus:outline-none"
-                  placeholder="+598 92 395 129"
-                />
-              </div>
-
-              <div className="flex flex-col gap-1.5">
-                <label
-                  htmlFor="service"
-                  className="text-xs uppercase tracking-wider text-crema/60"
-                >
-                  ¿Qué necesitás? *
-                </label>
-                <select
-                  id="service"
-                  {...register("service")}
-                  className="cursor-pointer appearance-none rounded-lg border border-grafito/20 bg-negro-mid px-4 py-3 text-sm text-crema transition-colors focus:border-oro-clave/50 focus:outline-none"
-                >
-                  <option value="" disabled>
-                    Seleccioná una opción
-                  </option>
-                  <option value="web">Sitio web</option>
-                  <option value="ecommerce">E-commerce</option>
-                  <option value="automations">Automatizaciones</option>
-                  <option value="unsure">No sé bien</option>
-                </select>
-                {errors.service && (
-                  <span className="text-xs text-red-400">{errors.service.message}</span>
-                )}
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-1.5">
-              <label
-                htmlFor="message"
-                className="text-xs uppercase tracking-wider text-crema/60"
-              >
-                Contanos tu proyecto *
-              </label>
-              <textarea
-                id="message"
-                {...register("message")}
-                rows={4}
-                className="resize-none rounded-lg border border-grafito/20 bg-negro-mid px-4 py-3 text-sm text-crema transition-colors placeholder:text-grafito/40 focus:border-oro-clave/50 focus:outline-none"
-                placeholder="Describí brevemente tu proyecto, negocio y qué estás buscando..."
-              />
-              {errors.message && (
-                <span className="text-xs text-red-400">{errors.message.message}</span>
-              )}
-            </div>
-
-            <button
-              type="submit"
-              className="btn-primary mt-2 w-full justify-center text-center"
-              disabled={status === "submitting"}
-            >
-              {status === "submitting" ? "Enviando..." : "Enviar mensaje →"}
-            </button>
-
-            {status === "error" && (
-              <p className="text-center text-sm text-red-400">
-                Hubo un error al enviar. Intentá de nuevo.
-              </p>
-            )}
+            <ContactFormFields
+              register={register}
+              errors={errors}
+              status={status}
+              submitLabel="Enviar mensaje ->"
+              formMessage={formMessage}
+              isSubmitDisabled={isSubmitDisabled}
+              turnstileSiteKey={turnstileSiteKey}
+              turnstileRenderKey={turnstileRenderKey}
+              turnstileToken={turnstileToken}
+              onTurnstileVerify={handleTurnstileVerify}
+              onTurnstileExpire={handleTurnstileExpire}
+              onTurnstileError={handleTurnstileError}
+            />
           </motion.form>
         )}
       </div>

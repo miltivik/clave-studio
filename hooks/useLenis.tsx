@@ -17,6 +17,10 @@ export function useLenis() {
   return useContext(LenisContext)
 }
 
+function shouldPreventLenis(node: HTMLElement) {
+  return Boolean(node.closest(".react-international-phone-country-selector-dropdown"))
+}
+
 export function LenisProvider({ children }: { children: ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null)
 
@@ -37,6 +41,7 @@ export function LenisProvider({ children }: { children: ReactNode }) {
         duration: 1.2,
         easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         smoothWheel: true,
+        prevent: shouldPreventLenis,
       })
 
       lenisRef.current = lenis

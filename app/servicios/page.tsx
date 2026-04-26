@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { Navbar } from "@/components/layout/Navbar"
 import { Footer } from "@/components/layout/Footer"
+import { SmartLink } from "@/components/ui/SmartLink"
 import { siteConfig } from "@/lib/site"
 
 export const metadata: Metadata = {
@@ -109,9 +110,9 @@ export default function ServiciosPage() {
               <p className="mb-8 text-grafito">
                 Si no encontrás el camino exacto, escribinos y definimos juntos la mejor solución.
               </p>
-              <Link href="/#contacto" className="btn-primary">
+              <SmartLink sectionId="contacto" className="btn-primary">
                 Hablemos
-              </Link>
+              </SmartLink>
             </div>
           </div>
         </section>

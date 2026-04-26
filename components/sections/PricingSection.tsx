@@ -1,4 +1,5 @@
 import { SectionHeader } from "@/components/ui/SectionHeader"
+import { SmartLink } from "@/components/ui/SmartLink"
 
 const PLANS = [
   {
@@ -111,9 +112,9 @@ export function PricingSection() {
                 ))}
               </ul>
 
-              <a
-                href="#contacto"
-                aria-label={`Contratar plan ${plan.name} por ${plan.price} USD`}
+              <SmartLink
+                sectionId="contacto"
+                ariaLabel={`Contratar plan ${plan.name} por ${plan.price} USD`}
                 className={
                   plan.featured
                     ? "btn-primary w-full justify-center text-center"
@@ -121,7 +122,7 @@ export function PricingSection() {
                 }
               >
                 {plan.cta}
-              </a>
+              </SmartLink>
             </article>
           ))}
         </div>

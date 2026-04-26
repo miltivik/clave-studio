@@ -5,6 +5,7 @@ import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { motion } from "framer-motion"
 import { FadeIn } from "@/components/ui/FadeIn"
+import { SmartLink } from "@/components/ui/SmartLink"
 import { SectionHeader } from "@/components/ui/SectionHeader"
 import {
   BarChart,
@@ -194,12 +195,12 @@ export function AutomationsSection() {
               ))}
             </div>
 
-            <a
-              href="#contacto"
+            <SmartLink
+              sectionId="contacto"
               className="btn-primary w-full self-stretch justify-center whitespace-normal text-center sm:w-auto sm:self-start sm:justify-start sm:whitespace-nowrap sm:text-left"
             >
               Contame qué proceso querés automatizar →
-            </a>
+            </SmartLink>
           </FadeIn>
 
           <FadeIn direction="left" delay={0.2} disableOnMobile className="relative">

@@ -1,19 +1,24 @@
-'use client'
+"use client"
 
 import React from "react"
 import Link from "next/link"
-import { usePathname, useRouter } from "next/navigation"
+import { usePathname } from "next/navigation"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { MenuToggleIcon } from "@/components/ui/menu-toggle-icon"
 import { useScroll } from "@/components/ui/use-scroll"
+import { SmartLink } from "@/components/ui/SmartLink"
 import { Logo } from "@/components/Logo"
 import { cn } from "@/lib/utils"
 
-const NAV_LINKS = [
-  { label: "Soluciones", href: "#servicios" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Proceso", href: "#proceso" },
-  { label: "Precios", href: "#precios" },
+type NavLink =
+  | { label: string; href: string }
+  | { label: string; sectionId: string }
+
+const NAV_LINKS: NavLink[] = [
+  { label: "Soluciones", sectionId: "servicios" },
+  { label: "Portfolio", sectionId: "portfolio" },
+  { label: "Proceso", sectionId: "proceso" },
+  { label: "Precios", sectionId: "precios" },
   { label: "Uruguay", href: "/agencia-digital-uruguay" },
 ]
 
@@ -21,7 +26,6 @@ export function Navbar() {
   const [open, setOpen] = React.useState(false)
   const scrolled = useScroll(10)
   const pathname = usePathname()
-  const router = useRouter()
 
   React.useEffect(() => {
     if (open) {
@@ -35,102 +39,81 @@ export function Navbar() {
     }
   }, [open])
 
-  function scrollToSection(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
-    e.preventDefault()
+  function closeMenu() {
     setOpen(false)
-
-    if (href.startsWith("/")) {
-      router.push(href)
-      return
-    }
-
-    if (pathname !== "/") {
-      router.push(`/${href}`)
-      return
-    }
-
-    const el = document.querySelector(href)
-    if (el) el.scrollIntoView({ behavior: "smooth" })
-  }
-
-  function scrollToContact() {
-    setOpen(false)
-
-    if (pathname !== "/") {
-      router.push("/#contacto")
-      return
-    }
-
-    const el = document.querySelector("#contacto")
-    if (el) el.scrollIntoView({ behavior: "smooth" })
   }
 
   return (
-    <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 mx-auto w-full max-w-5xl border-b border-transparent md:rounded-md md:border md:transition-all md:ease-out",
-        {
-          "bg-[var(--color-negro-clave)]/80 supports-[backdrop-filter]:bg-[var(--color-negro-clave)]/50 border-[var(--color-oro-clave)]/15 backdrop-blur-md md:top-4 md:max-w-4xl md:shadow":
-            scrolled && !open,
-          "bg-[var(--color-negro-clave)]": open,
-        },
-      )}
-    >
-      <nav
+    <>
+      <header
         className={cn(
-          "flex h-[72px] w-full items-center justify-between px-4 md:h-14 md:transition-all md:ease-out",
+          "fixed top-0 left-0 right-0 z-50 mx-auto w-full max-w-5xl border-b border-transparent md:rounded-md md:border md:transition-all md:ease-out",
           {
-            "md:px-6": scrolled,
+            "bg-[var(--color-negro-clave)]/80 supports-[backdrop-filter]:bg-[var(--color-negro-clave)]/50 border-[var(--color-oro-clave)]/15 backdrop-blur-md md:top-4 md:max-w-4xl md:shadow":
+              scrolled && !open,
+            "bg-[var(--color-negro-clave)]": open,
           },
         )}
       >
-        <Link
-          href="/"
-          className="flex items-center gap-2.5 text-[var(--color-oro-clave)] hover:text-[var(--color-miel)] transition-colors"
-          onClick={(e) => {
-            if (pathname !== "/") return
-            e.preventDefault()
-            window.scrollTo({ top: 0, behavior: "smooth" })
-          }}
+        <nav
+          className={cn(
+            "flex h-[72px] w-full items-center justify-between px-4 md:h-14 md:transition-all md:ease-out",
+            {
+              "md:px-6": scrolled,
+            },
+          )}
         >
-          <Logo size={28} />
-          <span className="font-display text-lg font-medium tracking-wide hidden sm:block">
-            Clave
-          </span>
-        </Link>
+          <Link
+            href="/"
+            className="flex items-center gap-2.5 text-[var(--color-oro-clave)] hover:text-[var(--color-miel)] transition-colors"
+            onClick={(e) => {
+              if (pathname !== "/") return
+              e.preventDefault()
+              window.scrollTo({ top: 0, behavior: "smooth" })
+            }}
+          >
+            <Logo size={28} />
+            <span className="font-display text-lg font-medium tracking-wide hidden sm:block">
+              Clave
+            </span>
+          </Link>
 
         <div className="hidden items-center gap-2 lg:flex">
           <Link
             className={cn(buttonVariants({ variant: "ghost" }), "font-body cursor-pointer")}
             href="/servicios"
-            onClick={() => setOpen(false)}
+            onClick={closeMenu}
           >
             Servicios
           </Link>
           {NAV_LINKS.map((link) =>
-            link.href.startsWith("/") ? (
+            "href" in link ? (
               <Link
                 key={link.label}
                 className={cn(buttonVariants({ variant: "ghost" }), "font-body cursor-pointer")}
                 href={link.href}
-                onClick={() => setOpen(false)}
+                onClick={closeMenu}
               >
                 {link.label}
               </Link>
             ) : (
-              <a
+              <SmartLink
                 key={link.label}
                 className={cn(buttonVariants({ variant: "ghost" }), "font-body cursor-pointer")}
-                href={link.href}
-                onClick={(e) => scrollToSection(e, link.href)}
+                sectionId={link.sectionId}
+                onClick={closeMenu}
               >
                 {link.label}
-              </a>
+              </SmartLink>
             ),
           )}
-          <Button onClick={scrollToContact} className="ml-2 font-display tracking-wide">
+          <SmartLink
+            sectionId="contacto"
+            onClick={closeMenu}
+            className={cn(buttonVariants(), "ml-2 font-display tracking-wide")}
+          >
             Hablemos
-          </Button>
+          </SmartLink>
         </div>
 
         <Button
@@ -142,7 +125,7 @@ export function Navbar() {
         >
           <MenuToggleIcon open={open} className="size-6" duration={300} />
         </Button>
-      </nav>
+        </nav>
 
       <div
         className={cn(
@@ -167,12 +150,12 @@ export function Navbar() {
                 }),
               )}
               href="/servicios"
-              onClick={() => setOpen(false)}
+              onClick={closeMenu}
             >
               Servicios
             </Link>
             {NAV_LINKS.map((link) =>
-              link.href.startsWith("/") ? (
+              "href" in link ? (
                 <Link
                   key={link.label}
                   className={cn(
@@ -183,12 +166,12 @@ export function Navbar() {
                     }),
                   )}
                   href={link.href}
-                  onClick={() => setOpen(false)}
+                  onClick={closeMenu}
                 >
                   {link.label}
                 </Link>
               ) : (
-                <a
+                <SmartLink
                   key={link.label}
                   className={cn(
                     buttonVariants({
@@ -197,24 +180,29 @@ export function Navbar() {
                         "justify-start hover:bg-transparent text-xl font-body hover:text-[var(--color-oro-clave)] p-0 h-auto",
                     }),
                   )}
-                  href={link.href}
-                  onClick={(e) => scrollToSection(e, link.href)}
+                  sectionId={link.sectionId}
+                  onClick={closeMenu}
                 >
                   {link.label}
-                </a>
+                </SmartLink>
               ),
             )}
           </div>
           <div className="flex flex-col mt-12 pt-8 border-t border-[var(--color-grafito)]/30">
-            <Button
-              className="w-full justify-center font-display tracking-wide text-lg py-6"
-              onClick={scrollToContact}
+            <SmartLink
+              sectionId="contacto"
+              onClick={closeMenu}
+              className={cn(
+                buttonVariants(),
+                "w-full justify-center font-display tracking-wide text-lg py-6"
+              )}
             >
               Hablemos
-            </Button>
+            </SmartLink>
           </div>
         </div>
       </div>
-    </header>
+      </header>
+    </>
   )
 }

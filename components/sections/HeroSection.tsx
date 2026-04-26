@@ -5,6 +5,7 @@ import dynamic from "next/dynamic"
 import Image from "next/image"
 import { gsap } from "gsap"
 import { motion } from "framer-motion"
+import { SmartLink } from "@/components/ui/SmartLink"
 import { useHasMounted } from "@/hooks/useHasMounted"
 import { useMediaQuery } from "@/hooks/useMediaQuery"
 import { useReducedMotion } from "@/hooks/useReducedMotion"
@@ -60,7 +61,7 @@ function KeyVisual() {
   }, [isMobile, prefersReducedMotion, shouldRender3D])
 
   return (
-    <div className="relative flex h-full w-full min-h-[320px] items-center justify-center sm:min-h-[400px] lg:min-h-[500px]">
+      <div className="relative flex h-full w-full min-h-[260px] items-center justify-center sm:min-h-[400px] lg:min-h-[500px]">
       <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
         <div className="h-[240px] w-[240px] rounded-full bg-oro-clave/10 blur-[70px] sm:h-[300px] sm:w-[300px] lg:h-[400px] lg:w-[400px] lg:blur-[80px]" />
       </div>
@@ -104,7 +105,7 @@ export function HeroSection() {
       className="relative flex min-h-screen items-center overflow-hidden bg-negro-clave pt-[72px]"
     >
       <div className="container-clave grid grid-cols-1 items-center gap-8 py-10 pb-20 sm:py-12 sm:pb-24 lg:grid-cols-2 lg:gap-4 lg:py-0">
-        <div className="order-2 flex flex-col gap-6 lg:order-1 lg:gap-8">
+        <div className="order-1 flex flex-col gap-6 lg:order-1 lg:gap-8">
           <motion.div
             initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -154,23 +155,23 @@ export function HeroSection() {
               delay: shouldReduceMotion ? 0 : 0.6,
             }}
           >
-            <a
-              href="#contacto"
+            <SmartLink
+              sectionId="contacto"
               className="btn-primary w-full justify-center whitespace-normal text-center sm:w-auto sm:whitespace-nowrap"
             >
               Quiero una web que venda →
-            </a>
-            <a
+            </SmartLink>
+            <SmartLink
               href="/servicios"
               className="btn-secondary w-full justify-center whitespace-normal text-center sm:w-auto sm:whitespace-nowrap"
             >
               Ver servicios
-            </a>
+            </SmartLink>
           </motion.div>
         </div>
 
         <motion.div
-          className="order-1 lg:order-2"
+          className="order-2 lg:order-2"
           initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{

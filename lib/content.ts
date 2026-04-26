@@ -114,7 +114,7 @@ export const hubUruguayContent: HubPageContent = {
         "Definimos alcance, tiempos, entregables y presupuesto con una propuesta cerrada.",
     },
     {
-      step: "03 / Diseno",
+      step: "03 / Diseño",
       description:
         "Trabajamos estructura, mensajes y visual para que la experiencia tenga foco comercial.",
     },
@@ -196,7 +196,7 @@ export const desarrolloWebContent: ServicePageContent = {
     "Tu sitio actual carga lento y pierde visitas antes de mostrar valor.",
     "No aparecés en Google cuando alguien busca tus servicios.",
     "Cada cambio depende de un tercero y te frena.",
-    "La experiencia en celular no acompana la compra ni la consulta.",
+    "La experiencia en celular no acompaña la compra ni la consulta.",
     "No tenés una base clara para medir resultados.",
   ],
   results: [
@@ -210,7 +210,7 @@ export const desarrolloWebContent: ServicePageContent = {
     "Diseño UI y UX alineado a tu servicio y a tu marca.",
     "Desarrollo con Next.js, React y TypeScript.",
     "SEO técnico: metadata, schema, sitemap y performance.",
-    "CMS o capa de edicion si el proyecto lo necesita.",
+    "CMS o capa de edición si el proyecto lo necesita.",
     "Soporte post lanzamiento para cerrar la puesta en marcha.",
   ],
   stack: [
@@ -228,10 +228,10 @@ export const desarrolloWebContent: ServicePageContent = {
     },
     {
       step: "02 / Estructura",
-      description: "Definimos contenido, recorrido y mensajes por seccion.",
+      description: "Definimos contenido, recorrido y mensajes por sección.",
     },
     {
-      step: "03 / Diseno",
+      step: "03 / Diseño",
       description: "Construimos una interfaz clara, sobria y alineada al negocio.",
     },
     {
@@ -306,7 +306,7 @@ export const ecommerceContent: ServicePageContent = {
     "Los medios de pago o la operación local no están bien resueltos.",
     "El catálogo es difícil de actualizar y mantener.",
     "Los correos de compra o seguimiento no acompañan al cliente.",
-    "La tienda no esta preparada para posicionar productos en Google.",
+    "La tienda no está preparada para posicionar productos en Google.",
   ],
   results: [
     "Checkout más claro y orientado a conversión.",
@@ -333,7 +333,7 @@ export const ecommerceContent: ServicePageContent = {
   ],
   process: [
     {
-      step: "01 / Diagnostico",
+      step: "01 / Diagnóstico",
       description: "Entendemos producto, operación y objetivo de venta.",
     },
     {
@@ -345,7 +345,7 @@ export const ecommerceContent: ServicePageContent = {
       description: "Definimos recorrido de compra, mensajes y estructura del catálogo.",
     },
     {
-      step: "04 / Implementacion",
+      step: "04 / Implementación",
       description: "Configuramos pagos, envíos, SEO y automatismos esenciales.",
     },
     {
@@ -360,7 +360,7 @@ export const ecommerceContent: ServicePageContent = {
   caseStudy: {
     client: "Papas Lokas",
     result:
-      "Canal de venta online para gastronomia con menu digital y pedidos claros, pensado para simplificar la compra.",
+      "Canal de venta online para gastronomía con menú digital y pedidos claros, pensado para simplificar la compra.",
       category: "Gastronomía",
     services: ["E-commerce", "UX", "Operativa digital"],
   },
@@ -451,15 +451,15 @@ export const automatizacionesContent: ServicePageContent = {
       description: "Documentamos qué pasa hoy y dónde se pierde tiempo.",
     },
     {
-      step: "02 / Priorizacion",
+      step: "02 / Priorización",
       description: "Elegimos los flujos con mejor impacto en venta u operación.",
     },
     {
-      step: "03 / Diseno",
+      step: "03 / Diseño",
       description: "Definimos la lógica de automatización y sus reglas.",
     },
     {
-      step: "04 / Implementacion",
+      step: "04 / Implementación",
       description: "Construimos integraciones y secuencias en la herramienta adecuada.",
     },
     {
@@ -474,7 +474,7 @@ export const automatizacionesContent: ServicePageContent = {
   caseStudy: {
     client: "Smile Leslieville",
     result:
-      "Sistema de turnos y seguimiento automatizado para reducir trabajo manual y ordenar la atencion.",
+      "Sistema de turnos y seguimiento automatizado para reducir trabajo manual y ordenar la atención.",
     category: "Salud",
     services: ["Automatizaciones", "WhatsApp", "CRM"],
   },

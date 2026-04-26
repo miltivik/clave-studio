@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { SmartLink } from "@/components/ui/SmartLink"
 import { useMediaQuery } from "@/hooks/useMediaQuery"
 
 gsap.registerPlugin(ScrollTrigger)
@@ -88,14 +89,14 @@ function ServiceContent({
             </li>
           ))}
         </ul>
-        <a
-          href="#contacto"
+        <SmartLink
+          sectionId="contacto"
           className={`inline-flex items-center gap-2 text-sm font-medium text-oro-clave transition-colors hover:text-miel ${
             mobile ? "mt-1 self-start" : "mt-2"
           }`}
         >
           {service.cta}
-        </a>
+        </SmartLink>
       </div>
     </div>
   )

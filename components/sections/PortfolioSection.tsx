@@ -3,6 +3,7 @@
 import { useRef } from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
+import { SmartLink } from "@/components/ui/SmartLink"
 import { useTilt } from "@/hooks/useTilt"
 
 const CASES = [
@@ -122,9 +123,9 @@ export function PortfolioSection() {
           viewport={{ once: true }}
         >
           <p className="mb-4 text-grafito">¿Querés ver más proyectos?</p>
-          <a href="#contacto" className="btn-secondary">
+          <SmartLink sectionId="contacto" className="btn-secondary">
             Ver portfolio completo
-          </a>
+          </SmartLink>
         </motion.div>
       </div>
     </section>

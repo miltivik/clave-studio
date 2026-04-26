@@ -1,34 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Clave Digital
 
-## Getting Started
+Sitio comercial en Next.js 16 para Clave Studio Digital.
 
-First, run the development server:
+## Desarrollo
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Scripts útiles:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm lint
+pnpm build
+pnpm perf
+```
 
-## Learn More
+## Variables de entorno
 
-To learn more about Next.js, take a look at the following resources:
+Copiar `.env.example` a `.env.local` o completar `.env` localmente.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+El flujo de contacto depende de estas variables:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+RESEND_API_KEY=
+SUPABASE_URL=
+SUPABASE_SERVICE_ROLE_KEY=
+TURNSTILE_SECRET_KEY=
+NEXT_PUBLIC_TURNSTILE_SITE_KEY=
+CONTACT_SECURITY_SALT=
+CONTACT_TO_EMAIL=
+CONTACT_FROM_EMAIL=
+CONTACT_FROM_NAME=
+```
 
-## Deploy on Vercel
+Notas:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL` y `CONTACT_FROM_NAME` son opcionales. Si faltan, el sistema usa los fallbacks actuales.
+- El ajuste final de remitente, dominio verificado y politica de `reply-to` de Resend sigue pendiente por definicion de producto.
+- Sin `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `TURNSTILE_SECRET_KEY` y `CONTACT_SECURITY_SALT` el endpoint de contacto responderá error de configuración.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Supabase
+
+Crear la tabla ejecutando la migracion SQL:
+
+```sql
+supabase/migrations/20260422_create_contact_leads.sql
+```
+
+La tabla `contact_leads` guarda:
+
+- datos del lead
+- origen de conversion (`source_path`, `utm_*`, `referrer`)
+- `user_agent`
+- `ip_hash` con sal, nunca la IP cruda
+- estados de captcha, envio y notificacion
+
+## Flujo de contacto
+
+El formulario hace lo siguiente:
+
+- valida los datos en cliente y servidor
+- usa honeypot oculto
+- exige Cloudflare Turnstile
+- limita a 3 intentos por 15 minutos por `ip_hash`
+- guarda cada lead en Supabase
+- intenta mandar la notificacion con Resend
+- si Resend falla, conserva el lead y marca `notification_status = failed`

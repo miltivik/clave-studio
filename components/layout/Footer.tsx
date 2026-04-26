@@ -1,20 +1,26 @@
 import Link from "next/link"
+import { SmartLink } from "@/components/ui/SmartLink"
 import { Logo } from "@/components/Logo"
 import { siteConfig } from "@/lib/site"
 
-const SERVICES_LINKS = [
+type FooterLink =
+  | { label: string; href: string }
+  | { label: string; sectionId: string }
+type SectionFooterLink = { label: string; sectionId: string }
+
+const SERVICES_LINKS: FooterLink[] = [
   { label: "Desarrollo web", href: "/desarrollo-web-uruguay" },
   { label: "E-commerce", href: "/ecommerce-uruguay" },
   { label: "Automatizaciones", href: "/automatizaciones-uruguay" },
   { label: "Agencia Uruguay", href: "/agencia-digital-uruguay" },
-  { label: "Consultoria", href: "#contacto" },
+  { label: "Consultoria", sectionId: "contacto" },
 ]
 
-const COMPANY_LINKS = [
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Proceso", href: "#proceso" },
-  { label: "Precios", href: "#precios" },
-  { label: "Preguntas frecuentes", href: "#faq" },
+const COMPANY_LINKS: SectionFooterLink[] = [
+  { label: "Portfolio", sectionId: "portfolio" },
+  { label: "Proceso", sectionId: "proceso" },
+  { label: "Precios", sectionId: "precios" },
+  { label: "Preguntas frecuentes", sectionId: "faq" },
 ]
 
 function InstagramIcon() {
@@ -85,21 +91,21 @@ export function Footer() {
             </h4>
             <ul className="space-y-3">
               <li>
-                <a
+                <Link
                   href="/servicios"
                   className="text-sm text-grafito transition-colors hover:text-oro-clave"
                 >
                   Todos los servicios
-                </a>
+                </Link>
               </li>
               {SERVICES_LINKS.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href.startsWith("#") ? `/${link.href}` : link.href}
+                  <SmartLink
+                    {...("href" in link ? { href: link.href } : { sectionId: link.sectionId })}
                     className="text-sm text-grafito transition-colors hover:text-oro-clave"
                   >
                     {link.label}
-                  </a>
+                  </SmartLink>
                 </li>
               ))}
             </ul>
@@ -112,12 +118,12 @@ export function Footer() {
             <ul className="space-y-3">
               {COMPANY_LINKS.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href.startsWith("#") ? `/${link.href}` : link.href}
+                  <SmartLink
+                    sectionId={link.sectionId}
                     className="text-sm text-grafito transition-colors hover:text-oro-clave"
                   >
                     {link.label}
-                  </a>
+                  </SmartLink>
                 </li>
               ))}
             </ul>
@@ -157,12 +163,12 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <Link
-                  href="/#contacto"
+                <SmartLink
+                  sectionId="contacto"
                   className="transition-colors hover:text-oro-clave"
                 >
                   Solicitar propuesta
-                </Link>
+                </SmartLink>
               </li>
               <li className="text-grafito/60">Horario: LATAM (UTC-3 a UTC-6)</li>
             </ul>
