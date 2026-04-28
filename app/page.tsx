@@ -31,17 +31,17 @@ export default function Home() {
           <div className="container-clave">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="font-display text-[clamp(1.8rem,4vw,3rem)] text-crema font-light mb-6">
-                ¿Buscás una agencia digital en Uruguay?
+                ¿Buscás una agencia digital en LATAM?
               </h2>
               <p className="text-grafito text-lg mb-8 max-w-[600px] mx-auto">
-                Somos un estudio especializado en desarrollo web, e-commerce y automatizaciones para pymes uruguayas.
+                Somos un estudio especializado en desarrollo web, e-commerce y automatizaciones para pymes de la región, con foco fuerte en Uruguay.
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
-                <Link href="/agencia-digital-uruguay" className="btn-primary">
-                  Conocer agencia Uruguay
+                <Link href="/agencia-digital-latam" className="btn-primary">
+                  Conocer agencia LATAM
                 </Link>
-                <Link href="/desarrollo-web-uruguay" className="btn-secondary">
-                  Desarrollo Web Uruguay
+                <Link href="/desarrollo-web-latam" className="btn-secondary">
+                  Desarrollo Web LATAM
                 </Link>
               </div>
             </div>

@@ -10,7 +10,7 @@ const cormorant = Cormorant({
   style: ["normal", "italic"],
   variable: "--font-cormorant",
   display: "swap",
-  preload: true,
+  preload: false,
 })
 
 const jost = Jost({
@@ -18,7 +18,7 @@ const jost = Jost({
   weight: ["300", "400", "500", "600"],
   variable: "--font-jost",
   display: "swap",
-  preload: true,
+  preload: false,
 })
 
 const jetbrainsMono = JetBrains_Mono({
@@ -26,7 +26,7 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ["400", "500"],
   variable: "--font-jetbrains",
   display: "swap",
-  preload: true,
+  preload: false,
 })
 
 export const metadata: Metadata = {

@@ -115,24 +115,6 @@ export function FAQSection() {
           </h2>
         </div>
 
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              mainEntity: FAQS.map((faq) => ({
-                "@type": "Question",
-                name: faq.question,
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: faq.answer,
-                },
-              })),
-            }),
-          }}
-        />
-
         <div className="mx-auto grid max-w-[1000px] grid-cols-1 gap-0 lg:grid-cols-2 lg:gap-16">
           <div>
             {col1.map((faq, index) => (

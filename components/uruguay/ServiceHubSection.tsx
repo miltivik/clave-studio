@@ -8,15 +8,19 @@ interface ServiceItem {
 
 interface ServiceHubSectionProps {
   services: ServiceItem[]
+  title?: string
 }
 
-export function ServiceHubSection({ services }: ServiceHubSectionProps) {
+export function ServiceHubSection({
+  services,
+  title = "Nuestros servicios en Uruguay",
+}: ServiceHubSectionProps) {
   return (
     <section className="bg-negro-mid py-20">
       <div className="container-clave">
         <div className="max-w-4xl mx-auto">
           <h2 className="font-display text-[clamp(1.8rem,4vw,3rem)] text-crema font-light mb-12">
-            Nuestros servicios en Uruguay
+            {title}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {services.map((service) => (

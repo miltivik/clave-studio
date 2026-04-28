@@ -47,6 +47,7 @@ export interface HubPageContent {
     description: string
     href: string
   }[]
+  marketSectionTitle: string
   whyUruguay: string[]
   process: { step: string; description: string }[]
   cases: {
@@ -95,6 +96,7 @@ export const hubUruguayContent: HubPageContent = {
       href: "/automatizaciones-uruguay",
     },
   ],
+  marketSectionTitle: "Por qué trabajar con un estudio con foco en Uruguay",
   whyUruguay: [
     "Atención en horario Uruguay y reuniones claras desde el inicio.",
     "Entendemos los tiempos, expectativas y realidad de las pymes locales.",
@@ -176,6 +178,106 @@ export const hubUruguayContent: HubPageContent = {
     { label: "Desarrollo Web Uruguay", href: "/desarrollo-web-uruguay" },
     { label: "E-commerce Uruguay", href: "/ecommerce-uruguay" },
     { label: "Automatizaciones Uruguay", href: "/automatizaciones-uruguay" },
+  ],
+}
+
+export const hubLatamContent: HubPageContent = {
+  slug: "agencia-digital-latam",
+  targetQuery: "agencia digital latam",
+  title: "Agencia Digital LATAM | Desarrollo Web, E-commerce y Automatizaciones",
+  description:
+    "Somos una agencia digital para LATAM. Creamos sitios web, tiendas online y automatizaciones para pymes que venden en varios mercados de la región.",
+  h1: "Agencia Digital LATAM",
+  hero: {
+    eyebrow: "LATAM primero",
+    title: "Presencia digital para vender mejor en la región",
+    subtitle:
+      "Trabajamos con pymes y equipos de LATAM que necesitan sitios rápidos, tiendas online y automatizaciones comerciales con soporte en español.",
+  },
+  services: [
+    {
+      title: "Desarrollo Web LATAM",
+      description: "Sitios corporativos, landing pages y productos web preparados para captar demanda regional.",
+      href: "/desarrollo-web-latam",
+    },
+    {
+      title: "E-commerce LATAM",
+      description: "Tiendas online con catálogo, pagos, envíos y comunicación pensada para mercados regionales.",
+      href: "/ecommerce-latam",
+    },
+    {
+      title: "Automatizaciones LATAM",
+      description: "Flujos de CRM, WhatsApp, email y reportes para equipos distribuidos en la región.",
+      href: "/automatizaciones-latam",
+    },
+  ],
+  marketSectionTitle: "Por qué trabajar con un estudio que entiende LATAM",
+  whyUruguay: [
+    "Comunicación en español, horario compatible y reuniones claras sin fricción.",
+    "Entendemos operaciones regionales con pagos, envíos, WhatsApp y equipos remotos.",
+    "Diseñamos sitios y tiendas con foco en confianza, velocidad y conversión mobile.",
+    "Priorizamos arquitectura escalable para sumar países, campañas y nuevas líneas de negocio.",
+    "Trabajamos con entregables concretos para que el equipo pueda operar sin depender de soporte constante.",
+  ],
+  process: [
+    {
+      step: "01 / Diagnóstico",
+      description:
+        "Analizamos el negocio, los países objetivo, la competencia y la prioridad comercial.",
+    },
+    {
+      step: "02 / Estrategia",
+      description:
+        "Definimos arquitectura, mensajes, rutas SEO y flujo de conversión por servicio o mercado.",
+    },
+    {
+      step: "03 / Diseño",
+      description:
+        "Construimos una experiencia clara para usuarios mobile y decisiones rápidas.",
+    },
+    {
+      step: "04 / Desarrollo",
+      description:
+        "Implementamos con performance, SEO técnico, medición y base para escalar contenido.",
+    },
+    {
+      step: "05 / Lanzamiento",
+      description:
+        "Publicamos, validamos indexabilidad y dejamos un plan de mejora para campañas y crecimiento orgánico.",
+    },
+  ],
+  cases: hubUruguayContent.cases,
+  faq: [
+    {
+      question: "¿Trabajan con empresas de toda LATAM?",
+      answer:
+        "Sí. Priorizamos proyectos donde podemos aportar desarrollo web, e-commerce o automatización con impacto comercial claro.",
+    },
+    {
+      question: "¿Pueden adaptar una web para varios países?",
+      answer:
+        "Sí. Podemos separar mensajes, URLs, medición y landings por país sin duplicar contenido de forma innecesaria.",
+    },
+    {
+      question: "¿Cómo coordinan los proyectos regionales?",
+      answer:
+        "Trabajamos remoto, con reuniones breves, entregables por hito y documentación simple para equipos distribuidos.",
+    },
+    {
+      question: "¿Incluyen SEO para LATAM?",
+      answer:
+        "Sí. Trabajamos estructura, metadata, performance, sitemap, enlazado interno y páginas por intención de búsqueda.",
+    },
+  ],
+  cta: {
+    primary: "Solicitar propuesta LATAM",
+    secondary: "Ver servicios regionales",
+  },
+  internalLinks: [
+    { label: "Desarrollo Web LATAM", href: "/desarrollo-web-latam" },
+    { label: "E-commerce LATAM", href: "/ecommerce-latam" },
+    { label: "Automatizaciones LATAM", href: "/automatizaciones-latam" },
+    { label: "Agencia Digital Uruguay", href: "/agencia-digital-uruguay" },
   ],
 }
 
@@ -516,11 +618,138 @@ export const automatizacionesContent: ServicePageContent = {
   ],
 }
 
+export const desarrolloWebLatamContent: ServicePageContent = {
+  ...desarrolloWebContent,
+  slug: "desarrollo-web-latam",
+  targetQuery: "desarrollo web latam",
+  title: "Desarrollo Web LATAM | Sitios Rápidos para Pymes Regionales",
+  description:
+    "Creamos sitios web para pymes en LATAM con Next.js, SEO técnico, performance y foco en conversión mobile.",
+  h1: "Desarrollo Web LATAM",
+  hero: {
+    eyebrow: "Webs para mercados regionales",
+    title: "Sitios rápidos para vender mejor en LATAM",
+    subtitle:
+      "Diseñamos y desarrollamos presencia digital para equipos que necesitan captar demanda, explicar mejor su oferta y medir resultados en la región.",
+  },
+  problems: [
+    "Tu sitio no comunica bien para distintos mercados de LATAM.",
+    "La carga mobile frena consultas antes de que el usuario entienda la oferta.",
+    "No hay estructura SEO para campañas, servicios y países objetivo.",
+    "Los formularios y canales de contacto no están conectados al proceso comercial.",
+    "Cada mejora técnica depende de rehacer partes grandes del sitio.",
+  ],
+  results: [
+    "Sitio rápido, claro y preparado para tráfico mobile regional.",
+    "Arquitectura escalable para sumar landings, países y servicios.",
+    "SEO técnico e indexabilidad listos desde el lanzamiento.",
+    "Mensajes orientados a confianza, conversión y contacto.",
+    "Medición conectada para comparar campañas y consultas por mercado.",
+  ],
+  cta: {
+    primary: "Cotizar desarrollo web LATAM",
+    secondary: "Ver servicios LATAM",
+  },
+  internalLinks: [
+    { label: "Agencia Digital LATAM", href: "/agencia-digital-latam" },
+    { label: "E-commerce LATAM", href: "/ecommerce-latam" },
+    { label: "Automatizaciones LATAM", href: "/automatizaciones-latam" },
+    { label: "Desarrollo Web Uruguay", href: "/desarrollo-web-uruguay" },
+  ],
+}
+
+export const ecommerceLatamContent: ServicePageContent = {
+  ...ecommerceContent,
+  slug: "ecommerce-latam",
+  targetQuery: "ecommerce latam",
+  title: "E-commerce LATAM | Tiendas Online para Vender en la Región",
+  description:
+    "Creamos e-commerce para LATAM con catálogo claro, pagos, envíos, automatizaciones y experiencia de compra orientada a conversión.",
+  h1: "E-commerce LATAM",
+  hero: {
+    eyebrow: "Tiendas online regionales",
+    title: "Tu tienda preparada para vender en LATAM",
+    subtitle:
+      "Armamos e-commerce con base operativa clara para vender por país, ordenar catálogo y automatizar comunicaciones de compra.",
+  },
+  problems: [
+    "La tienda no está preparada para operar con diferentes medios de pago o mercados.",
+    "El catálogo crece sin estructura y cuesta encontrar productos clave.",
+    "La experiencia mobile pierde ventas en pasos críticos.",
+    "No hay base SEO para categorías, productos y campañas regionales.",
+    "El seguimiento postcompra depende de tareas manuales.",
+  ],
+  results: [
+    "Tienda online con recorrido de compra más claro.",
+    "Catálogo y categorías preparados para escalar.",
+    "Integraciones razonables para pagos, envíos y comunicaciones.",
+    "SEO técnico para productos, colecciones y páginas comerciales.",
+    "Automatismos iniciales para seguimiento y recuperación de oportunidades.",
+  ],
+  cta: {
+    primary: "Cotizar e-commerce LATAM",
+    secondary: "Ver servicios regionales",
+  },
+  internalLinks: [
+    { label: "Agencia Digital LATAM", href: "/agencia-digital-latam" },
+    { label: "Desarrollo Web LATAM", href: "/desarrollo-web-latam" },
+    { label: "Automatizaciones LATAM", href: "/automatizaciones-latam" },
+    { label: "E-commerce Uruguay", href: "/ecommerce-uruguay" },
+  ],
+}
+
+export const automatizacionesLatamContent: ServicePageContent = {
+  ...automatizacionesContent,
+  slug: "automatizaciones-latam",
+  targetQuery: "automatizaciones latam",
+  title: "Automatizaciones LATAM | CRM, WhatsApp y Procesos Comerciales",
+  description:
+    "Diseñamos automatizaciones para equipos en LATAM: CRM, WhatsApp, formularios, email, reportes y seguimiento comercial.",
+  h1: "Automatizaciones LATAM",
+  hero: {
+    eyebrow: "Procesos regionales sin caos",
+    title: "Automatizaciones para equipos que venden en LATAM",
+    subtitle:
+      "Conectamos formularios, CRM, WhatsApp, email y reportes para que los leads avancen sin depender de copiar y pegar.",
+  },
+  problems: [
+    "Los leads llegan desde varios canales y se pierden en planillas o chats.",
+    "El seguimiento cambia según persona, país o herramienta.",
+    "El equipo repite tareas manuales que deberían estar conectadas.",
+    "No hay trazabilidad comercial para saber qué canal funciona mejor.",
+    "WhatsApp, email y CRM no trabajan como un sistema único.",
+  ],
+  results: [
+    "Leads centralizados y asignados con reglas claras.",
+    "Seguimientos automáticos por canal y etapa comercial.",
+    "CRM actualizado sin carga manual constante.",
+    "Alertas y reportes para entender performance regional.",
+    "Menos fricción operativa para equipos remotos o distribuidos.",
+  ],
+  cta: {
+    primary: "Cotizar automatización LATAM",
+    secondary: "Ver servicios regionales",
+  },
+  internalLinks: [
+    { label: "Agencia Digital LATAM", href: "/agencia-digital-latam" },
+    { label: "Desarrollo Web LATAM", href: "/desarrollo-web-latam" },
+    { label: "E-commerce LATAM", href: "/ecommerce-latam" },
+    { label: "Automatizaciones Uruguay", href: "/automatizaciones-uruguay" },
+  ],
+}
+
 export const uruUruguayPagesContent = {
   hub: hubUruguayContent,
   desarrolloWeb: desarrolloWebContent,
   ecommerce: ecommerceContent,
   automatizaciones: automatizacionesContent,
+} as const
+
+export const latamPagesContent = {
+  hub: hubLatamContent,
+  desarrolloWeb: desarrolloWebLatamContent,
+  ecommerce: ecommerceLatamContent,
+  automatizaciones: automatizacionesLatamContent,
 } as const
 
 export type UruguayPageSlug = keyof typeof uruUruguayPagesContent

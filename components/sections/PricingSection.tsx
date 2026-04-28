@@ -114,7 +114,6 @@ export function PricingSection() {
 
               <SmartLink
                 sectionId="contacto"
-                ariaLabel={`Contratar plan ${plan.name} por ${plan.price} USD`}
                 className={
                   plan.featured
                     ? "btn-primary w-full justify-center text-center"

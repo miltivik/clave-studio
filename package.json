@@ -11,6 +11,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "test:seo": "node --test scripts/seo-regression.test.mjs",
     "test:perf-tooling": "node --test scripts/perf-lib.test.mjs scripts/home-performance.test.mjs",
     "perf": "pnpm perf:mobile",
     "perf:mobile": "pnpm build && node scripts/perf-audit.mjs"

@@ -133,42 +133,6 @@ export function TestimonialsSection() {
         </div>
       </div>
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "ProfessionalService",
-            name: "Clave Studio Digital",
-            image: "https://clave.studio/logo-3d.svg",
-            url: "https://clave.studio",
-            telephone: "",
-            address: {
-              "@type": "PostalAddress",
-              addressLocality: "LATAM",
-              addressCountry: "AR",
-            },
-            aggregateRating: {
-              "@type": "AggregateRating",
-              ratingValue: "5",
-              reviewCount: RAW_TESTIMONIALS.length.toString(),
-            },
-            review: RAW_TESTIMONIALS.map((testimonial) => ({
-              "@type": "Review",
-              author: {
-                "@type": "Person",
-                name: testimonial.name,
-              },
-              reviewBody: testimonial.quote,
-              reviewRating: {
-                "@type": "Rating",
-                ratingValue: "5",
-              },
-            })),
-          }),
-        }}
-      />
-
       <div className="flex flex-col gap-6">
         {shouldHydrateCarousel ? (
           <DeferredStaggerTestimonials testimonials={formattedTestimonials} />

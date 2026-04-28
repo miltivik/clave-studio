@@ -9,12 +9,16 @@ import {
 } from "./perf-lib.mjs";
 
 test("defines the expected mobile performance budgets", () => {
-  assert.equal(AUDIT_ROUTES.length, 6);
+  assert.equal(AUDIT_ROUTES.length, 10);
   assert.deepEqual(
     AUDIT_ROUTES.map(({ route, minPerformance }) => ({ route, minPerformance })),
     [
       { route: "/", minPerformance: 80 },
       { route: "/servicios", minPerformance: 85 },
+      { route: "/agencia-digital-latam", minPerformance: 85 },
+      { route: "/desarrollo-web-latam", minPerformance: 85 },
+      { route: "/ecommerce-latam", minPerformance: 85 },
+      { route: "/automatizaciones-latam", minPerformance: 85 },
       { route: "/agencia-digital-uruguay", minPerformance: 85 },
       { route: "/desarrollo-web-uruguay", minPerformance: 85 },
       { route: "/ecommerce-uruguay", minPerformance: 85 },

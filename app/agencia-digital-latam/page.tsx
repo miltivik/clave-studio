@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { siteConfig } from "@/lib/site"
-import { hubUruguayContent } from "@/lib/content"
+import { hubLatamContent } from "@/lib/content"
 import { ServiceHubSection } from "@/components/uruguay/ServiceHubSection"
 import { CTASection } from "@/components/uruguay/CTASection"
 import { FAQSection } from "@/components/uruguay/FAQSection"
@@ -10,31 +10,31 @@ import { Footer } from "@/components/layout/Footer"
 import { serializeJsonLd } from "@/lib/structured-data"
 
 export const metadata: Metadata = {
-  title: hubUruguayContent.title,
-  description: hubUruguayContent.description,
-  alternates: { canonical: `${siteConfig.url}${siteConfig.routes.agenciaDigitalUruguay}` },
+  title: hubLatamContent.title,
+  description: hubLatamContent.description,
+  alternates: { canonical: `${siteConfig.url}${siteConfig.routes.agenciaDigitalLatam}` },
   openGraph: {
-    title: hubUruguayContent.title,
-    description: hubUruguayContent.description,
-    url: `${siteConfig.url}${siteConfig.routes.agenciaDigitalUruguay}`,
+    title: hubLatamContent.title,
+    description: hubLatamContent.description,
+    url: `${siteConfig.url}${siteConfig.routes.agenciaDigitalLatam}`,
     images: [
       {
-        url: "/agencia-digital-uruguay/opengraph-image",
+        url: "/agencia-digital-latam/opengraph-image",
         width: 1200,
         height: 630,
-        alt: hubUruguayContent.h1,
+        alt: hubLatamContent.h1,
       },
     ],
   },
   twitter: {
-    title: hubUruguayContent.title,
-    description: hubUruguayContent.description,
-    images: ["/agencia-digital-uruguay/opengraph-image"],
+    title: hubLatamContent.title,
+    description: hubLatamContent.description,
+    images: ["/agencia-digital-latam/opengraph-image"],
   },
 }
 
-export default function AgenciaDigitalUruguayPage() {
-  const content = hubUruguayContent
+export default function AgenciaDigitalLatamPage() {
+  const content = hubLatamContent
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -44,7 +44,7 @@ export default function AgenciaDigitalUruguayPage() {
         "@type": "ListItem",
         position: 2,
         name: content.h1,
-        item: `${siteConfig.url}${siteConfig.routes.agenciaDigitalUruguay}`,
+        item: `${siteConfig.url}${siteConfig.routes.agenciaDigitalLatam}`,
       },
     ],
   }
@@ -70,7 +70,7 @@ export default function AgenciaDigitalUruguayPage() {
           </div>
         </section>
 
-        <ServiceHubSection services={content.services} />
+        <ServiceHubSection services={content.services} title="Nuestros servicios para LATAM" />
 
         <section className="bg-negro-mid py-20">
           <div className="container-clave">

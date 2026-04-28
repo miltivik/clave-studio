@@ -12,6 +12,8 @@
   --color-crema: #F7F3EA;
   --color-grafito: #6B6760;
   --color-negro-mid: #1A1916;
+  --color-grafito-on-dark: #B8B1A6;
+  --color-oro-on-light: #7A4E00;
 
   /* Radii */
   --radius-sm: 6px;
@@ -139,6 +141,32 @@ body {
 ::selection {
   background-color: var(--color-oro-clave);
   color: var(--color-negro-clave);
+}
+
+/* Context contrast overrides for shared utility tokens */
+.bg-negro-clave :where(.text-grafito),
+.bg-negro-clave :where(.text-grafito\/70),
+.bg-negro-clave :where(.text-grafito\/60),
+.bg-negro-clave :where(.text-grafito\/50),
+.bg-negro-mid :where(.text-grafito),
+.bg-negro-mid :where(.text-grafito\/70),
+.bg-negro-mid :where(.text-grafito\/60),
+.bg-negro-mid :where(.text-grafito\/50) {
+  color: var(--color-grafito-on-dark);
+}
+
+.bg-negro-clave :where(.text-oro-clave\/40),
+.bg-negro-mid :where(.text-oro-clave\/40) {
+  color: var(--color-oro-clave);
+}
+
+.bg-crema :where(.text-grafito) {
+  color: var(--color-grafito);
+}
+
+.bg-crema :where(.text-oro-clave),
+.bg-crema :where(.text-oro-clave\/60) {
+  color: var(--color-oro-on-light);
 }
 
 /* ========================================

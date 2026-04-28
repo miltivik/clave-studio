@@ -19,6 +19,7 @@ const NAV_LINKS: NavLink[] = [
   { label: "Portfolio", sectionId: "portfolio" },
   { label: "Proceso", sectionId: "proceso" },
   { label: "Precios", sectionId: "precios" },
+  { label: "LATAM", href: "/agencia-digital-latam" },
   { label: "Uruguay", href: "/agencia-digital-uruguay" },
 ]
 

@@ -4,7 +4,7 @@ import { ecommerceContent } from "@/lib/content"
 import { ServicePageComponent } from "@/components/uruguay/ServicePageComponent"
 import { Navbar } from "@/components/layout/Navbar"
 import { Footer } from "@/components/layout/Footer"
-import { createFaqJsonLd, serializeJsonLd } from "@/lib/structured-data"
+import { serializeJsonLd } from "@/lib/structured-data"
 
 export const metadata: Metadata = {
   title: ecommerceContent.title,
@@ -56,7 +56,7 @@ export default function EcommerceUruguayPage() {
     serviceType: "E-commerce",
   }
 
-  const jsonLd = [breadcrumbJsonLd, serviceJsonLd, createFaqJsonLd(content.faq)]
+  const jsonLd = [breadcrumbJsonLd, serviceJsonLd]
 
   return (
     <>

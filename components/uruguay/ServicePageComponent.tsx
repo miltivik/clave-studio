@@ -39,7 +39,7 @@ export function ServicePageComponent({
   internalLinks,
 }: ServicePageProps) {
   return (
-    <div className="bg-negro-clave min-h-screen">
+    <main className="bg-negro-clave min-h-screen">
       <section className="section-padding pb-20">
         <div className="container-clave">
           <div className="max-w-4xl mx-auto">
@@ -185,6 +185,6 @@ export function ServicePageComponent({
       <InternalLinks links={internalLinks} />
       <FAQSection faqs={faq} />
       <CTASection cta={cta} />
-    </div>
+    </main>
   )
 }

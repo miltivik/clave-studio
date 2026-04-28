@@ -1,6 +1,10 @@
 export const AUDIT_ROUTES = [
   { route: "/", label: "Home", minPerformance: 80 },
   { route: "/servicios", label: "Servicios", minPerformance: 85 },
+  { route: "/agencia-digital-latam", label: "Agencia LATAM", minPerformance: 85 },
+  { route: "/desarrollo-web-latam", label: "Desarrollo Web LATAM", minPerformance: 85 },
+  { route: "/ecommerce-latam", label: "E-commerce LATAM", minPerformance: 85 },
+  { route: "/automatizaciones-latam", label: "Automatizaciones LATAM", minPerformance: 85 },
   { route: "/agencia-digital-uruguay", label: "Agencia Uruguay", minPerformance: 85 },
   { route: "/desarrollo-web-uruguay", label: "Desarrollo Web", minPerformance: 85 },
   { route: "/ecommerce-uruguay", label: "E-commerce", minPerformance: 85 },

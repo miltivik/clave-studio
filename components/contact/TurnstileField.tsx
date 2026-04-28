@@ -39,8 +39,12 @@ export function TurnstileField({
   onExpire,
   onError,
 }: TurnstileFieldProps) {
+  const wrapperRef = useRef<HTMLDivElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const widgetIdRef = useRef<string | number | null>(null)
+  const [shouldLoadScript, setShouldLoadScript] = useState(
+    () => typeof window !== "undefined" && Boolean(window.turnstile)
+  )
   const [isScriptReady, setIsScriptReady] = useState(
     () => typeof window !== "undefined" && Boolean(window.turnstile)
   )
@@ -53,6 +57,29 @@ export function TurnstileField({
   const handleError = useEffectEvent(() => {
     onError()
   })
+
+  useEffect(() => {
+    if (shouldLoadScript || !siteKey || !wrapperRef.current) return
+
+    if (!("IntersectionObserver" in window)) {
+      const timer = globalThis.setTimeout(() => setShouldLoadScript(true), 0)
+      return () => globalThis.clearTimeout(timer)
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return
+
+        setShouldLoadScript(true)
+        observer.disconnect()
+      },
+      { rootMargin: "600px 0px" }
+    )
+
+    observer.observe(wrapperRef.current)
+
+    return () => observer.disconnect()
+  }, [shouldLoadScript, siteKey])
 
   useEffect(() => {
     if (!siteKey || !isScriptReady || !containerRef.current || !window.turnstile) return
@@ -78,13 +105,15 @@ export function TurnstileField({
   }, [isScriptReady, renderKey, siteKey])
 
   return (
-    <div className="space-y-2">
-      <Script
-        id="cloudflare-turnstile-script"
-        src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
-        strategy="afterInteractive"
-        onLoad={() => setIsScriptReady(true)}
-      />
+    <div ref={wrapperRef} className="space-y-2" onFocusCapture={() => setShouldLoadScript(true)}>
+      {shouldLoadScript && siteKey && (
+        <Script
+          id="cloudflare-turnstile-script"
+          src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+          strategy="afterInteractive"
+          onLoad={() => setIsScriptReady(true)}
+        />
+      )}
 
       <div ref={containerRef} />
 

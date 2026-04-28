@@ -9,9 +9,13 @@ type FooterLink =
 type SectionFooterLink = { label: string; sectionId: string }
 
 const SERVICES_LINKS: FooterLink[] = [
+  { label: "Agencia LATAM", href: "/agencia-digital-latam" },
   { label: "Desarrollo web", href: "/desarrollo-web-uruguay" },
+  { label: "Desarrollo web LATAM", href: "/desarrollo-web-latam" },
   { label: "E-commerce", href: "/ecommerce-uruguay" },
+  { label: "E-commerce LATAM", href: "/ecommerce-latam" },
   { label: "Automatizaciones", href: "/automatizaciones-uruguay" },
+  { label: "Automatizaciones LATAM", href: "/automatizaciones-latam" },
   { label: "Agencia Uruguay", href: "/agencia-digital-uruguay" },
   { label: "Consultoria", sectionId: "contacto" },
 ]
@@ -87,9 +91,9 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wide text-crema">
+            <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-crema">
               Servicios
-            </h4>
+            </h2>
             <nav aria-label="Servicios">
               <ul className="space-y-3">
                 <li>
@@ -115,9 +119,9 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wide text-crema">
+            <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-crema">
               Empresa
-            </h4>
+            </h2>
             <nav aria-label="Empresa">
               <ul className="space-y-3">
                 {COMPANY_LINKS.map((link) => (
@@ -135,9 +139,9 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wide text-crema">
+            <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-crema">
               Contacto
-            </h4>
+            </h2>
             <ul className="space-y-3 text-sm text-grafito">
               <li>
                 <a
