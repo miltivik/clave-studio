@@ -50,7 +50,7 @@ export default function TermsPage() {
               <h2 className="mb-3 font-display text-2xl text-crema">Propiedad intelectual</h2>
               <p>
                 Los textos, marcas, gráficos, componentes visuales y materiales publicados en
-                clave.studio pertenecen a Clave Studio Digital o se utilizan con autorización. No
+                clavestudio.dev pertenecen a Clave Studio Digital o se utilizan con autorización. No
                 pueden reutilizarse sin consentimiento previo.
               </p>
             </section>

@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "Clave Studio Digital",
   shortName: "Clave",
-  url: "https://clave.studio",
-  email: "hola@clave.studio",
+  url: "https://clavestudio.dev",
+  email: "hola@clavestudio.dev",
   phoneDisplay: "092 395 129",
   phoneE164: "+59892395129",
   whatsappUrl: "https://wa.me/59892395129",

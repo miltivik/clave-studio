@@ -23,7 +23,7 @@ function optionalTextRow(label: string, value?: string) {
 
 function buildContactEmailText(lead: ContactLeadRecord) {
   return [
-    "Nueva consulta desde clave.studio",
+    "Nueva consulta desde clavestudio.dev",
     "",
     `Nombre: ${lead.name}`,
     `Email: ${lead.email}`,
@@ -97,7 +97,7 @@ export async function sendContactAutoReply(
       lead.message,
       "",
       "Clave Studio",
-      "hola@clave.studio",
+      "hola@clavestudio.dev",
       "WhatsApp: +598 92 395 129",
     ].join("\n"),
   })

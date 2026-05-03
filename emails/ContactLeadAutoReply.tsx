@@ -73,7 +73,7 @@ export function ContactLeadAutoReply({ lead }: ContactLeadAutoReplyProps) {
           <Section style={contactCard}>
             <Text style={sectionTitle}>Nuestros canales</Text>
             <Text style={contactText}>
-              Email: hola@clave.studio
+              Email: hola@clavestudio.dev
             </Text>
             <Text style={contactText}>
               WhatsApp: +598 92 395 129

@@ -35,7 +35,7 @@ export default function PrivacyPage() {
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-grafito">
             Esta política describe cómo recopilamos, usamos y protegemos la información compartida
-            a través de clave.studio.
+            a través de clavestudio.dev.
           </p>
 
           <div className="mt-12 space-y-10 text-sm leading-7 text-crema/80">
