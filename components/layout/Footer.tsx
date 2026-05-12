@@ -1,14 +1,8 @@
 import Link from "next/link"
-import { SmartLink } from "@/components/ui/SmartLink"
 import { Logo } from "@/components/Logo"
 import { siteConfig } from "@/lib/site"
 
-type FooterLink =
-  | { label: string; href: string }
-  | { label: string; sectionId: string }
-type SectionFooterLink = { label: string; sectionId: string }
-
-const SERVICES_LINKS: FooterLink[] = [
+const SERVICES_LINKS: { label: string; href: string }[] = [
   { label: "Agencia LATAM", href: "/agencia-digital-latam" },
   { label: "Desarrollo web", href: "/desarrollo-web-uruguay" },
   { label: "Desarrollo web LATAM", href: "/desarrollo-web-latam" },
@@ -17,14 +11,16 @@ const SERVICES_LINKS: FooterLink[] = [
   { label: "Automatizaciones", href: "/automatizaciones-uruguay" },
   { label: "Automatizaciones LATAM", href: "/automatizaciones-latam" },
   { label: "Agencia Uruguay", href: "/agencia-digital-uruguay" },
-  { label: "Consultoria", sectionId: "contacto" },
+  { label: "Consultoría", href: "/#contacto" },
 ]
 
-const COMPANY_LINKS: SectionFooterLink[] = [
-  { label: "Portfolio", sectionId: "portfolio" },
-  { label: "Proceso", sectionId: "proceso" },
-  { label: "Precios", sectionId: "precios" },
-  { label: "Preguntas frecuentes", sectionId: "faq" },
+const COMPANY_LINKS: { label: string; href: string }[] = [
+  { label: "Sobre nosotros", href: "/sobre-nosotros" },
+  { label: "Blog", href: "/blog" },
+  { label: "Portfolio", href: "/#portfolio" },
+  { label: "Proceso", href: "/#proceso" },
+  { label: "Precios", href: "/#precios" },
+  { label: "Preguntas frecuentes", href: "/#faq" },
 ]
 
 function InstagramIcon() {
@@ -106,12 +102,12 @@ export function Footer() {
                 </li>
                 {SERVICES_LINKS.map((link) => (
                   <li key={link.label}>
-                    <SmartLink
-                      {...("href" in link ? { href: link.href } : { sectionId: link.sectionId })}
+                    <Link
+                      href={link.href}
                       className="text-sm text-grafito transition-colors hover:text-oro-clave"
                     >
                       {link.label}
-                    </SmartLink>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -126,12 +122,12 @@ export function Footer() {
               <ul className="space-y-3">
                 {COMPANY_LINKS.map((link) => (
                   <li key={link.label}>
-                    <SmartLink
-                      sectionId={link.sectionId}
+                    <Link
+                      href={link.href}
                       className="text-sm text-grafito transition-colors hover:text-oro-clave"
                     >
                       {link.label}
-                    </SmartLink>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -172,12 +168,12 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <SmartLink
-                  sectionId="contacto"
+                <Link
+                  href="/#contacto"
                   className="transition-colors hover:text-oro-clave"
                 >
                   Solicitar propuesta
-                </SmartLink>
+                </Link>
               </li>
               <li className="text-grafito/60">Horario: LATAM (UTC-3 a UTC-6)</li>
             </ul>

@@ -31,6 +31,8 @@ export const siteConfig = {
   routes: {
     home: "/",
     services: "/servicios",
+    about: "/sobre-nosotros",
+    blog: "/blog",
     privacy: "/privacidad",
     terms: "/terminos",
     agenciaDigitalLatam: "/agencia-digital-latam",

@@ -9,7 +9,14 @@ import { serializeJsonLd } from "@/lib/structured-data"
 export const metadata: Metadata = {
   title: ecommerceLatamContent.title,
   description: ecommerceLatamContent.description,
-  alternates: { canonical: `${siteConfig.url}${siteConfig.routes.ecommerceLatam}` },
+  alternates: {
+    canonical: `${siteConfig.url}${siteConfig.routes.ecommerceLatam}`,
+    languages: {
+      "es-419": `${siteConfig.url}${siteConfig.routes.ecommerceLatam}`,
+      "es-UY": `${siteConfig.url}${siteConfig.routes.ecommerceUruguay}`,
+      "x-default": `${siteConfig.url}${siteConfig.routes.ecommerceLatam}`,
+    },
+  },
   openGraph: {
     title: ecommerceLatamContent.title,
     description: ecommerceLatamContent.description,

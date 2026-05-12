@@ -11,12 +11,26 @@ const HeroVisualDesktop = dynamic(
   }
 )
 
+function defer(callback: () => void) {
+  if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+    window.requestIdleCallback(callback, { timeout: 200 })
+  } else {
+    setTimeout(callback, 150)
+  }
+}
+
 export function HeroVisualGate() {
   const [canRender, setCanRender] = useState(false)
 
   useEffect(() => {
-    const query = window.matchMedia("(min-width: 768px)")
-    const update = () => setCanRender(query.matches)
+    const query = window.matchMedia("(min-width: 1024px)")
+    const update = () => {
+      if (query.matches) {
+        defer(() => setCanRender(true))
+      } else {
+        setCanRender(false)
+      }
+    }
 
     update()
     query.addEventListener("change", update)

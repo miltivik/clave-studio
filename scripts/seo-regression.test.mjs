@@ -108,7 +108,7 @@ test("layout applies next/font variables for the site fonts", () => {
 
   assert.match(source, /next\/font\/google/);
   assert.match(source, /className=\{\`\$\{cormorant\.variable\} \$\{jost\.variable\} \$\{jetbrainsMono\.variable\}\`\}/);
-  assert.match(source, /preload: false/);
+  assert.match(source, /preload: true/);
 });
 
 test("home critical hero copy avoids delayed client animation", () => {
@@ -121,7 +121,7 @@ test("home critical hero copy avoids delayed client animation", () => {
   assert.doesNotMatch(source, /<motion\.h1/);
   assert.doesNotMatch(source, /<motion\.p/);
   assert.doesNotMatch(source, /opacity: 0, y: 40/);
-  assert.match(visualSource, /fetchPriority="high"/);
+  assert.doesNotMatch(visualSource, /fetchPriority="high"/);
   assert.match(source, /className="order-2 hidden md:block/);
 });
 

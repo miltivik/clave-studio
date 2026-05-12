@@ -9,7 +9,14 @@ import { serializeJsonLd } from "@/lib/structured-data"
 export const metadata: Metadata = {
   title: desarrolloWebContent.title,
   description: desarrolloWebContent.description,
-  alternates: { canonical: `${siteConfig.url}${siteConfig.routes.desarrolloWebUruguay}` },
+  alternates: {
+    canonical: `${siteConfig.url}${siteConfig.routes.desarrolloWebUruguay}`,
+    languages: {
+      "es-419": `${siteConfig.url}${siteConfig.routes.desarrolloWebLatam}`,
+      "es-UY": `${siteConfig.url}${siteConfig.routes.desarrolloWebUruguay}`,
+      "x-default": `${siteConfig.url}${siteConfig.routes.desarrolloWebLatam}`,
+    },
+  },
   openGraph: {
     title: desarrolloWebContent.title,
     description: desarrolloWebContent.description,

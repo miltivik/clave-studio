@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next"
 import { siteConfig } from "@/lib/site"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date("2026-04-26T00:00:00.000Z")
+  const lastModified = new Date()
 
   return [
     {
@@ -16,6 +16,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "weekly",
       priority: 0.9,
+    },
+    {
+      url: `${siteConfig.url}${siteConfig.routes.about}`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${siteConfig.url}${siteConfig.routes.blog}`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
+    {
+      url: `${siteConfig.url}/blog/cuanto-cuesta-pagina-web-uruguay-2026`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
+      url: `${siteConfig.url}/blog/shopify-vs-woocommerce-latam`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
+      url: `${siteConfig.url}/blog/automatizaciones-pyme-uruguay`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.6,
     },
     {
       url: `${siteConfig.url}${siteConfig.routes.agenciaDigitalLatam}`,

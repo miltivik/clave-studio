@@ -171,6 +171,7 @@ export function ServicesSection() {
 
   return (
     <section id="servicios" ref={sectionRef} className="relative overflow-hidden bg-negro-clave">
+      <h2 className="sr-only">Servicios</h2>
       <div className="container-clave py-10 pb-20 lg:hidden">
         <div className="space-y-6">
           {SERVICES.map((service) => (

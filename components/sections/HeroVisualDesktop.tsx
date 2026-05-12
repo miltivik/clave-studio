@@ -22,10 +22,9 @@ function StaticHeroVisual() {
       <div className="relative flex h-[300px] w-[300px] items-center justify-center lg:h-[360px] lg:w-[360px]">
         <Image
           src="/logo-3d.svg"
-          alt="Clave Studio"
+          alt=""
           fill
-          loading="eager"
-          fetchPriority="high"
+          loading="lazy"
           className="object-contain opacity-95 drop-shadow-[0_24px_60px_rgba(201,137,10,0.18)]"
           sizes="(max-width: 1023px) 300px, 360px"
         />
