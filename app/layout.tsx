@@ -10,7 +10,7 @@ const cormorant = Cormorant({
   style: ["normal", "italic"],
   variable: "--font-cormorant",
   display: "swap",
-  preload: false,
+  preload: true,
 })
 
 const jost = Jost({
@@ -18,7 +18,7 @@ const jost = Jost({
   weight: ["300", "400", "500", "600"],
   variable: "--font-jost",
   display: "swap",
-  preload: false,
+  preload: true,
 })
 
 const jetbrainsMono = JetBrains_Mono({
@@ -76,27 +76,35 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "@id": siteConfig.url,
-    name: siteConfig.name,
-    description: siteConfig.defaultDescription,
-    url: siteConfig.url,
-    logo: `${siteConfig.url}/logo-3d.svg`,
-    areaServed: ["Uruguay", "LATAM"],
-    availableLanguage: "Spanish",
-    serviceType: ["Web Development", "E-commerce", "Business Automation"],
-    priceRange: "$$",
-    contactPoint: {
-      "@type": "ContactPoint",
-      contactType: "sales",
-      email: siteConfig.email,
-      telephone: siteConfig.phoneE164,
+  const schemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "@id": siteConfig.url,
+      name: siteConfig.name,
+      description: siteConfig.defaultDescription,
+      url: siteConfig.url,
+      logo: `${siteConfig.url}/logo-3d.svg`,
+      areaServed: ["Uruguay", "LATAM"],
       availableLanguage: "Spanish",
+      serviceType: ["Web Development", "E-commerce", "Business Automation"],
+      priceRange: "$$",
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "sales",
+        email: siteConfig.email,
+        telephone: siteConfig.phoneE164,
+        availableLanguage: "Spanish",
+      },
+      sameAs: [siteConfig.instagramUrl, siteConfig.whatsappUrl],
     },
-    sameAs: [siteConfig.instagramUrl, siteConfig.whatsappUrl],
-  }
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      url: siteConfig.url,
+      name: siteConfig.name,
+    },
+  ]
 
   return (
     <html
@@ -106,7 +114,7 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(schemas) }}
         />
       </head>
       <body>{children}</body>
