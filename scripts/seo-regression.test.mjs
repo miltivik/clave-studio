@@ -64,6 +64,15 @@ test("sitemap includes all LATAM service URLs", () => {
   }
 });
 
+test("security.txt exposes required disclosure fields", () => {
+  const source = read("app/.well-known/security.txt/route.ts");
+
+  assert.match(source, /Contact: mailto:/);
+  assert.match(source, /Expires:/);
+  assert.match(source, /Canonical:/);
+  assert.match(source, /text\/plain/);
+});
+
 test("commercial pages avoid self-serving review and FAQ rich-result markup", () => {
   const testimonials = read("components/sections/TestimonialsSection.tsx");
   const homeFaq = read("components/sections/FAQSection.tsx");
