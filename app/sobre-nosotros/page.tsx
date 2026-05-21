@@ -75,25 +75,19 @@ export default function SobreNosotrosPage() {
           <div className="container-clave">
             <div className="max-w-4xl mx-auto">
               <h2 className="font-display text-[clamp(1.8rem,4vw,3rem)] text-crema font-light mb-12">
-                Nuestra historia
+                Nuestra filosofía y origen
               </h2>
               <div className="space-y-6 text-grafito leading-relaxed">
                 <p>
-                  Clave Studio Digital nació en Uruguay con una idea clara: ayudar a las pymes de
-                  la región a tener una presencia digital que realmente funcione. No solo sitios
-                  bonitos, sino herramientas que carguen rápido, se vean bien en Google y
-                  conviertan visitas en ventas.
+                  Clave Studio Digital nace como una propuesta fresca y honesta en el panorama digital regional.
+                  Surgimos en Uruguay con la convicción de que las pymes y profesionales merecen una presencia web construida bajo estándares rigurosos de diseño y velocidad, sin las complicaciones habituales ni rodeos innecesarios.
                 </p>
                 <p>
-                  Empezamos trabajando con negocios locales en Montevideo y rápidamente expandimos
-                  a otros países de LATAM. Hoy trabajamos con equipos de Argentina, Chile,
-                  Colombia y más, siempre con el mismo enfoque: entender el negocio primero, y
-                  después construir la solución.
+                  Como estudio de reciente creación, entendemos que la mejor forma de presentar nuestro estándar es con hechos concretos.
+                  Por eso, hemos desarrollado tres demostraciones en vivo que representan el nivel de detalle y velocidad que aplicamos en cada trabajo. Creemos firmemente que la mejor carta de presentación es el trabajo visible y la transparencia absoluta.
                 </p>
                 <p>
-                  Creemos que la tecnología debe ser un medio, no un fin. Por eso cada proyecto
-                  empieza con una conversación sobre objetivos comerciales, público y
-                  operación, antes de escribir una sola línea de código.
+                  Establecemos relaciones directas, fluidas y sin intermediarios. Nos enfocamos en entender a fondo las metas comerciales y operativas de cada proyecto antes de estructurar el código, asegurando que la tecnología sea una herramienta ágil y al servicio del crecimiento de tu negocio.
                 </p>
               </div>
             </div>
@@ -131,8 +125,7 @@ export default function SobreNosotrosPage() {
                 <div>
                   <h3 className="font-display text-xl text-negro-clave mb-2">Desarrollo sólido</h3>
                   <p className="text-negro-clave/70 leading-relaxed">
-                    Next.js, React, TypeScript y Tailwind. Código limpio, mantenible y con SEO
-                    técnico desde el día uno.
+                    Código limpio, optimizado y estructurado bajo los estándares más modernos para asegurar máxima velocidad y posicionamiento web desde el primer día.
                   </p>
                 </div>
               </div>
@@ -144,28 +137,24 @@ export default function SobreNosotrosPage() {
           <div className="container-clave">
             <div className="max-w-4xl mx-auto">
               <h2 className="font-display text-[clamp(1.8rem,4vw,3rem)] text-crema font-light mb-12">
-                Tecnologías que dominamos
+                Nuestras especialidades
               </h2>
               <div className="flex flex-wrap gap-3">
                 {[
-                  "Next.js",
-                  "React",
-                  "TypeScript",
-                  "Tailwind CSS",
-                  "Shopify",
-                  "WooCommerce",
-                  "Sanity",
-                  "Make",
-                  "Zapier",
-                  "n8n",
-                  "HubSpot",
-                  "WhatsApp Business API",
-                ].map((tech) => (
+                  "Diseño de Interfaces",
+                  "Tiendas Online",
+                  "Automatización de Procesos",
+                  "Optimización para Buscadores",
+                  "Integración de Sistemas",
+                  "Diseño Adaptable para Celulares",
+                  "Gestión de Contenidos",
+                  "Asesoría Tecnológica",
+                ].map((spec) => (
                   <span
-                    key={tech}
+                    key={spec}
                     className="px-4 py-2 rounded-full border border-oro-clave/20 text-oro-clave/80 text-sm font-mono"
                   >
-                    {tech}
+                    {spec}
                   </span>
                 ))}
               </div>

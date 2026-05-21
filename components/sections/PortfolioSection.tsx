@@ -122,9 +122,9 @@ export function PortfolioSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <p className="mb-4 text-grafito">¿Querés ver más proyectos?</p>
+          <p className="mb-4 text-grafito">¿Tenés una idea en mente o querés cotizar tu diseño personalizado?</p>
           <SmartLink sectionId="contacto" className="btn-secondary">
-            Ver portfolio completo
+            Iniciar mi proyecto
           </SmartLink>
         </motion.div>
       </div>

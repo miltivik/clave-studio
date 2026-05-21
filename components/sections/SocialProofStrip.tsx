@@ -1,8 +1,10 @@
 const METRICS = [
-  "+40 proyectos entregados",
-  "98% de clientes satisfechos",
-  "Promedio de 18 días de entrega",
-  "+USD 2M en ventas generadas para clientes",
+  "Interfaces diseñadas al detalle",
+  "Velocidad y fluidez garantizadas",
+  "Preparado para aparecer en Google",
+  "Experiencia impecable en celulares",
+  "Plazos cerrados con entrega en 18 días",
+  "Desarrollo para pymes de la región",
 ]
 
 export function SocialProofStrip() {

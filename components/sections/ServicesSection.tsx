@@ -16,12 +16,12 @@ const SERVICES = [
       "Diseñamos y desarrollamos tu presencia digital desde cero: rápida, visible en Google y pensada para convertir visitantes en clientes.",
     features: [
       "Diseño UI/UX personalizado",
-      "Desarrollo Next.js con base técnica sólida",
+      "Estructura optimizada de máxima velocidad",
       "SEO técnico desde el día 1",
       "Panel de administración para que edites vos mismo",
       "3 meses de soporte incluido",
     ],
-    cta: "Ver proyectos web →",
+    cta: "Quiero mi sitio web →",
     accent: "from-oro-clave/20 to-transparent",
   },
   {
@@ -30,7 +30,7 @@ const SERVICES = [
     description:
       "Armamos tu e-commerce con todo lo necesario para empezar a vender online: catálogo, pagos, envíos y una experiencia de compra que genera confianza.",
     features: [
-      "Tienda con Shopify, WooCommerce o custom",
+      "Integración con plataformas líderes de comercio electrónico",
       "Integración de medios de pago LATAM",
       "Gestión de stock e inventario",
       "Emails automáticos de compra y seguimiento",
@@ -49,7 +49,7 @@ const SERVICES = [
       "CRM y pipeline de ventas conectado a tu web",
       "Bots de WhatsApp y formularios inteligentes",
       "Reportes automáticos semanales",
-      "Integración con tu stack actual sin migraciones forzadas",
+      "Conexión con tus sistemas actuales sin complicaciones",
     ],
     cta: "Automatizar mi negocio →",
     accent: "from-grafito/20 to-transparent",

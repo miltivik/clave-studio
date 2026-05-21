@@ -25,19 +25,19 @@ const FAQS = [
       "Sí. Todos nuestros proyectos incluyen un panel de administración sencillo. Y te capacitamos para usarlo antes del lanzamiento.",
   },
   {
-    question: "¿Trabajan con clientes fuera de Uruguay?",
+    question: "¿Trabajan con empresas fuera de Uruguay?",
     answer:
-      "Sí. Hoy tenemos foco comercial en Uruguay, pero también trabajamos con clientes de otros países de LATAM cuando el proyecto encaja bien. Las reuniones se coordinan por Zoom, en horario Uruguay.",
+      "Sí. Si bien nuestro lanzamiento inicial tiene foco comercial en Uruguay, estamos preparados para colaborar de forma remota con pymes y profesionales de otros países de LATAM cuando el proyecto encaje bien. Coordinamos encuentros virtuales de forma simple.",
   },
   {
-    question: "¿Qué plataformas usan para los e-commerce?",
+    question: "¿Qué plataformas usan para las tiendas online?",
     answer:
-      "Dependiendo del proyecto usamos Shopify, WooCommerce o desarrollo custom. Te recomendamos la que mejor se adapte a tu negocio, presupuesto y operación.",
+      "Dependiendo de la complejidad y requerimientos, estructuramos tu tienda utilizando las plataformas de comercio electrónico líderes en la industria o mediante un desarrollo propio enfocado en el rendimiento. Te asesoramos para elegir el camino ideal para tu operación.",
   },
   {
     question: "¿Qué es exactamente una automatización?",
     answer:
-      "Es conectar tus herramientas para que ciertas tareas sucedan solas: cuando alguien completa un formulario, te llega un WhatsApp, se agrega al CRM y recibe un email de bienvenida automáticamente. Sin que hagas nada.",
+      "Es conectar tus herramientas para que ciertas tareas sucedan de forma automática: cuando un interesado completa un formulario de contacto, recibís una notificación instantánea, sus datos quedan guardados de forma organizada y recibe un correo electrónico de bienvenida de inmediato. Todo ocurre de forma fluida sin que tengas que intervenir manualmente.",
   },
   {
     question: "¿Tienen soporte después del lanzamiento?",

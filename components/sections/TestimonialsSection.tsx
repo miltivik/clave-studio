@@ -127,7 +127,7 @@ export function TestimonialsSection() {
             Testimonios
           </span>
           <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] text-negro-clave font-light leading-tight">
-            Lo que dicen nuestros{" "}
+            La confianza de nuestros primeros{" "}
             <span className="text-oro-clave italic">clientes.</span>
           </h2>
         </div>

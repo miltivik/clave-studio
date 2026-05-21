@@ -7,7 +7,6 @@ import { ServicesSection } from "@/components/sections/ServicesSection"
 import { ProcessSection } from "@/components/sections/ProcessSection"
 import { PortfolioSection } from "@/components/sections/PortfolioSection"
 import { AutomationsSection } from "@/components/sections/AutomationsSection"
-import { TestimonialsSection } from "@/components/sections/TestimonialsSection"
 import { PricingSection } from "@/components/sections/PricingSection"
 import { FAQSection } from "@/components/sections/FAQSection"
 import { CTAFinal } from "@/components/sections/CTAFinal"
@@ -24,14 +23,13 @@ export default function Home() {
         <ProcessSection />
         <PortfolioSection />
         <AutomationsSection />
-        <TestimonialsSection />
         <PricingSection />
         <FAQSection />
         <section className="bg-negro-clave section-padding">
           <div className="container-clave">
             <div className="max-w-4xl mx-auto text-center">
-              <h2 className="font-display text-[clamp(1.8rem,4vw,3rem)] text-crema font-light mb-6">
-                ¿Buscás una agencia digital en LATAM?
+<h2 className="font-display text-[clamp(1.8rem,4vw,3rem)] text-crema font-light mb-6">
+                ¿Tenés un proyecto digital en mente?
               </h2>
               <p className="text-grafito text-lg mb-8 max-w-[600px] mx-auto">
                 Somos un estudio especializado en desarrollo web, e-commerce y automatizaciones para pymes de la región, con foco fuerte en Uruguay.
