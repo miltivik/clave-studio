@@ -12,7 +12,7 @@ const PLANS = [
       "Panel de administración",
       "1 mes de soporte",
     ],
-    price: "800",
+    price: "450",
     cta: "Lanzar mi web →",
     featured: false,
   },
@@ -26,7 +26,7 @@ const PLANS = [
       "Email automático",
       "3 meses de soporte prioritario",
     ],
-    price: "2.200",
+    price: "1.290",
     cta: "Empezar a vender →",
     featured: true,
     badge: "Más elegido",
@@ -41,7 +41,7 @@ const PLANS = [
       "Reportes automáticos",
       "Soporte 6 meses",
     ],
-    price: "3.800",
+    price: "2.700",
     cta: "Automatizar todo →",
     featured: false,
   },
@@ -128,7 +128,8 @@ export function PricingSection() {
 
         <p className="mx-auto mt-10 max-w-[600px] text-center text-xs text-grafito/60">
           Los precios son orientativos. Cada proyecto se presupuesta a medida después de una
-          llamada de descubrimiento gratuita.
+          llamada de descubrimiento gratuita. El mantenimiento mensual no está incluido. Hosting,
+          dominios, licencias y servicios de terceros se cotizan aparte cuando corresponda.
         </p>
       </div>
     </section>

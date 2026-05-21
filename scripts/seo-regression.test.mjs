@@ -97,6 +97,16 @@ test("pricing CTAs keep visible text as accessible names", () => {
   assert.doesNotMatch(source, /ariaLabel=\{`Contratar plan/);
 });
 
+test("pricing shows accessible entry anchors and maintenance exclusions", () => {
+  const source = read("components/sections/PricingSection.tsx");
+
+  assert.match(source, /price:\s*"450"/);
+  assert.match(source, /price:\s*"1\.290"/);
+  assert.match(source, /price:\s*"2\.700"/);
+  assert.match(source, /El mantenimiento mensual no est[aá] incluido/);
+  assert.match(source, /Hosting,\s*dominios, licencias y servicios de terceros/);
+});
+
 test("contextual contrast tokens satisfy WCAG AA for common backgrounds", () => {
   const css = read("app/globals.css");
   const darkText = cssVar(css, "--color-grafito-on-dark");
@@ -118,6 +128,13 @@ test("layout applies next/font variables for the site fonts", () => {
   assert.match(source, /next\/font\/google/);
   assert.match(source, /className=\{\`\$\{cormorant\.variable\} \$\{jost\.variable\} \$\{jetbrainsMono\.variable\}\`\}/);
   assert.match(source, /preload: true/);
+});
+
+test("layout tolerates browser-injected root attributes before hydration", () => {
+  const source = read("app/layout.tsx");
+
+  assert.match(source, /<html[\s\S]*suppressHydrationWarning/);
+  assert.match(source, /<body suppressHydrationWarning>/);
 });
 
 test("home critical hero copy avoids delayed client animation", () => {

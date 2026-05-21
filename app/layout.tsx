@@ -110,6 +110,7 @@ export default function RootLayout({
     <html
       lang="es"
       className={`${cormorant.variable} ${jost.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
     >
       <head>
         <script
@@ -117,7 +118,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: serializeJsonLd(schemas) }}
         />
       </head>
-      <body>{children}</body>
+      <body suppressHydrationWarning>{children}</body>
     </html>
   )
 }
