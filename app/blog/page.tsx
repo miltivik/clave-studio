@@ -5,7 +5,7 @@ import { Footer } from "@/components/layout/Footer"
 import { siteConfig } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: "Blog | Clave Studio Digital",
+  title: "Blog",
   description:
     "Artículos sobre desarrollo web, e-commerce y automatizaciones para pymes en Uruguay y LATAM.",
   alternates: { canonical: `${siteConfig.url}/blog` },

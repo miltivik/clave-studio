@@ -6,7 +6,7 @@ import { SmartLink } from "@/components/ui/SmartLink"
 import { siteConfig } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: "Servicios Digitales para LATAM y Uruguay",
+  title: "Servicios Digitales para Pymes",
   description:
     "Servicios de desarrollo web, e-commerce y automatizaciones para pymes en LATAM, con páginas específicas para Uruguay.",
   alternates: { canonical: `${siteConfig.url}${siteConfig.routes.services}` },

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${siteConfig.url}${siteConfig.routes.desarrolloWebLatam}`,
     languages: {
-      "es-419": `${siteConfig.url}${siteConfig.routes.desarrolloWebLatam}`,
+      es: `${siteConfig.url}${siteConfig.routes.desarrolloWebLatam}`,
       "es-UY": `${siteConfig.url}${siteConfig.routes.desarrolloWebUruguay}`,
       "x-default": `${siteConfig.url}${siteConfig.routes.desarrolloWebLatam}`,
     },

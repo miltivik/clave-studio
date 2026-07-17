@@ -5,7 +5,7 @@ import { Footer } from "@/components/layout/Footer"
 import { siteConfig } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: "Shopify vs WooCommerce en LATAM 2026 | Clave Studio",
+  title: "Shopify vs WooCommerce en LATAM 2026",
   description:
     "Comparativa completa de Shopify vs WooCommerce para vender online en LATAM: medios de pago, envíos, costos, escalabilidad y cuál elegir según tu negocio.",
   alternates: { canonical: `${siteConfig.url}/blog/shopify-vs-woocommerce-latam` },

@@ -5,7 +5,7 @@ import { Footer } from "@/components/layout/Footer"
 import { siteConfig } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: "Cuánto cuesta una página web en Uruguay en 2026 | Clave Studio",
+  title: "Cuánto cuesta una página web en Uruguay en 2026",
   description:
     "Desglosamos los costos reales de desarrollar un sitio web en Uruguay en 2026: landing pages, sitios corporativos, tiendas online y presupuestos por etapa.",
   alternates: { canonical: `${siteConfig.url}/blog/cuanto-cuesta-pagina-web-uruguay-2026` },

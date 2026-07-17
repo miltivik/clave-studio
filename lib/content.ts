@@ -69,9 +69,9 @@ export interface HubPageContent {
 export const hubUruguayContent: HubPageContent = {
   slug: "agencia-digital-uruguay",
   targetQuery: "agencia digital uruguay",
-  title: "Agencia Digital Uruguay | Desarrollo Web, E-commerce y Automatizaciones",
+  title: "Agencia Digital Uruguay para Pymes",
   description:
-    "Somos una agencia digital en Uruguay. Creamos sitios web, tiendas online y automatizaciones para pymes que necesitan una presencia digital seria y resultados medibles.",
+    "Agencia digital en Uruguay para pymes. Creamos sitios web, e-commerce y automatizaciones con atención local, objetivos claros y soporte en español.",
   h1: "Agencia Digital Uruguay",
   hero: {
     eyebrow: "Uruguay primero",
@@ -184,9 +184,9 @@ export const hubUruguayContent: HubPageContent = {
 export const hubLatamContent: HubPageContent = {
   slug: "agencia-digital-latam",
   targetQuery: "agencia digital latam",
-  title: "Agencia Digital LATAM | Desarrollo Web, E-commerce y Automatizaciones",
+  title: "Agencia Digital para Pymes en LATAM",
   description:
-    "Somos una agencia digital para LATAM. Creamos sitios web, tiendas online y automatizaciones para pymes que venden en varios mercados de la región.",
+    "Agencia digital para pymes en LATAM. Desarrollamos sitios web, e-commerce y automatizaciones para equipos que venden y operan en varios mercados.",
   h1: "Agencia Digital LATAM",
   hero: {
     eyebrow: "LATAM primero",
@@ -284,9 +284,9 @@ export const hubLatamContent: HubPageContent = {
 export const desarrolloWebContent: ServicePageContent = {
   slug: "desarrollo-web-uruguay",
   targetQuery: "desarrollo web uruguay",
-  title: "Desarrollo Web Uruguay | Sitios Rápidos y Visibles en Google",
+  title: "Desarrollo Web Uruguay para Pymes",
   description:
-    "Creamos sitios web en Uruguay con Next.js, SEO técnico y foco en conversión. Proyectos claros, rápidos y fáciles de mantener.",
+    "Desarrollo web en Uruguay para pymes: sitios rápidos con Next.js, SEO técnico y foco en convertir visitas en consultas comerciales.",
   h1: "Desarrollo Web Uruguay",
   hero: {
     eyebrow: "Sitios web para vender mejor",
@@ -393,9 +393,9 @@ export const desarrolloWebContent: ServicePageContent = {
 export const ecommerceContent: ServicePageContent = {
   slug: "ecommerce-uruguay",
   targetQuery: "ecommerce uruguay",
-  title: "E-commerce Uruguay | Tiendas Online para Vender Mejor",
+  title: "E-commerce Uruguay para Pymes",
   description:
-    "Creamos tiendas online en Uruguay con foco en conversión, catálogo claro, pagos y una operación simple de mantener.",
+    "Creamos tiendas online en Uruguay con catálogo claro, pagos, envíos y una experiencia de compra enfocada en generar confianza y ventas.",
   h1: "E-commerce Uruguay",
   hero: {
     eyebrow: "Tiendas online para crecer",
@@ -507,9 +507,9 @@ export const ecommerceContent: ServicePageContent = {
 export const automatizacionesContent: ServicePageContent = {
   slug: "automatizaciones-uruguay",
   targetQuery: "automatizaciones para negocios uruguay",
-  title: "Automatizaciones Uruguay | Procesos Más Claros y Menos Trabajo Manual",
+  title: "Automatizaciones para Pymes en Uruguay",
   description:
-    "Conectamos herramientas, CRM, formularios, WhatsApp y email para que los procesos repetitivos sucedan solos y el equipo gane tiempo.",
+    "Automatizaciones para pymes en Uruguay: conectamos CRM, WhatsApp, email y reportes para reducir tareas manuales y ordenar la operación.",
   h1: "Automatizaciones Uruguay",
   hero: {
     eyebrow: "Operar mejor sin sumar caos",
@@ -622,9 +622,9 @@ export const desarrolloWebLatamContent: ServicePageContent = {
   ...desarrolloWebContent,
   slug: "desarrollo-web-latam",
   targetQuery: "desarrollo web latam",
-  title: "Desarrollo Web LATAM | Sitios Rápidos para Pymes Regionales",
+  title: "Desarrollo Web para Pymes en LATAM",
   description:
-    "Creamos sitios web para pymes en LATAM con Next.js, SEO técnico, performance y foco en conversión mobile.",
+    "Desarrollo web para pymes en LATAM: sitios rápidos, SEO técnico y una base preparada para campañas y operaciones regionales.",
   h1: "Desarrollo Web LATAM",
   hero: {
     eyebrow: "Webs para mercados regionales",
@@ -662,9 +662,9 @@ export const ecommerceLatamContent: ServicePageContent = {
   ...ecommerceContent,
   slug: "ecommerce-latam",
   targetQuery: "ecommerce latam",
-  title: "E-commerce LATAM | Tiendas Online para Vender en la Región",
+  title: "E-commerce para Pymes en LATAM",
   description:
-    "Creamos e-commerce para LATAM con catálogo claro, pagos, envíos, automatizaciones y experiencia de compra orientada a conversión.",
+    "Creamos tiendas online para pymes en LATAM con pagos, envíos y catálogos preparados para vender en distintos mercados de la región.",
   h1: "E-commerce LATAM",
   hero: {
     eyebrow: "Tiendas online regionales",
@@ -702,9 +702,9 @@ export const automatizacionesLatamContent: ServicePageContent = {
   ...automatizacionesContent,
   slug: "automatizaciones-latam",
   targetQuery: "automatizaciones latam",
-  title: "Automatizaciones LATAM | CRM, WhatsApp y Procesos Comerciales",
+  title: "Automatizaciones para Pymes en LATAM",
   description:
-    "Diseñamos automatizaciones para equipos en LATAM: CRM, WhatsApp, formularios, email, reportes y seguimiento comercial.",
+    "Automatizaciones para pymes en LATAM: conectamos CRM, WhatsApp, email y reportes para coordinar equipos y procesos regionales.",
   h1: "Automatizaciones LATAM",
   hero: {
     eyebrow: "Procesos regionales sin caos",

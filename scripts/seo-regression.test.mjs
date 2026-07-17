@@ -9,6 +9,12 @@ function read(relativePath) {
   return fs.readFileSync(path.join(root, relativePath), "utf8");
 }
 
+function firstTitle(source) {
+  const match = source.match(/\btitle:\s*"([^"]+)"/);
+  assert.ok(match, "Missing static metadata title");
+  return match[1];
+}
+
 function hexToRgb(hex) {
   const value = hex.replace("#", "");
   return {
@@ -61,6 +67,75 @@ test("sitemap includes all LATAM service URLs", () => {
 
   for (const routeName of latamRoutes) {
     assert.match(source, new RegExp(`siteConfig\\.routes\\.${routeName}`));
+  }
+});
+
+test("regional page metadata uses Google-supported Spanish hreflang values", () => {
+  const regionalPages = [
+    "app/agencia-digital-latam/page.tsx",
+    "app/agencia-digital-uruguay/page.tsx",
+    "app/desarrollo-web-latam/page.tsx",
+    "app/desarrollo-web-uruguay/page.tsx",
+    "app/ecommerce-latam/page.tsx",
+    "app/ecommerce-uruguay/page.tsx",
+    "app/automatizaciones-latam/page.tsx",
+    "app/automatizaciones-uruguay/page.tsx",
+  ];
+
+  for (const page of regionalPages) {
+    const source = read(page);
+
+    assert.doesNotMatch(source, /"es-419"/);
+    assert.match(source, /\bes:\s*`/);
+    assert.match(source, /"es-UY":\s*`/);
+  }
+});
+
+test("sitemap does not claim every page changed at build time", () => {
+  const source = read("app/sitemap.ts");
+
+  assert.doesNotMatch(source, /const lastModified = new Date\(\)/);
+  assert.doesNotMatch(source, /\blastModified,\s*$/m);
+});
+
+test("child metadata relies on one short brand suffix", () => {
+  const expectedTitles = new Map([
+    ["app/blog/page.tsx", "Blog"],
+    ["app/servicios/page.tsx", "Servicios Digitales para Pymes"],
+    ["app/sobre-nosotros/page.tsx", "Sobre Nosotros"],
+    [
+      "app/blog/cuanto-cuesta-pagina-web-uruguay-2026/page.tsx",
+      "Cuánto cuesta una página web en Uruguay en 2026",
+    ],
+    ["app/blog/shopify-vs-woocommerce-latam/page.tsx", "Shopify vs WooCommerce en LATAM 2026"],
+    [
+      "app/blog/automatizaciones-pyme-uruguay/page.tsx",
+      "5 automatizaciones para pymes en Uruguay",
+    ],
+  ]);
+
+  for (const [page, expectedTitle] of expectedTitles) {
+    assert.equal(firstTitle(read(page)), expectedTitle);
+  }
+
+  assert.match(read("app/layout.tsx"), /template:\s*"%s \| Clave"/);
+});
+
+test("regional metadata titles map one concise query to each page", () => {
+  const source = read("lib/content.ts");
+  const expectedTitles = [
+    "Agencia Digital Uruguay para Pymes",
+    "Agencia Digital para Pymes en LATAM",
+    "Desarrollo Web Uruguay para Pymes",
+    "Desarrollo Web para Pymes en LATAM",
+    "E-commerce Uruguay para Pymes",
+    "E-commerce para Pymes en LATAM",
+    "Automatizaciones para Pymes en Uruguay",
+    "Automatizaciones para Pymes en LATAM",
+  ];
+
+  for (const title of expectedTitles) {
+    assert.match(source, new RegExp(`title:\\s*"${title}"`));
   }
 });
 

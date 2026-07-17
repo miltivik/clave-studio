@@ -5,7 +5,7 @@ import { Footer } from "@/components/layout/Footer"
 import { siteConfig } from "@/lib/site"
 
 export const metadata: Metadata = {
-  title: "5 automatizaciones que toda pyme uruguaya necesita | Clave Studio",
+  title: "5 automatizaciones para pymes en Uruguay",
   description:
     "Descubrí 5 automatizaciones prácticas para pymes en Uruguay: WhatsApp, CRM, email automático, reportes y seguimiento de clientes sin trabajo manual.",
   alternates: { canonical: `${siteConfig.url}/blog/automatizaciones-pyme-uruguay` },

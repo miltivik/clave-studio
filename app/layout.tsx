@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
     default: siteConfig.defaultTitle,
-    template: "%s | Clave Studio Digital",
+    template: "%s | Clave",
   },
   description: siteConfig.defaultDescription,
   keywords: [...siteConfig.keywords],

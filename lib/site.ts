@@ -9,11 +9,11 @@ export const siteConfig = {
   instagramHandle: "@clavestudiodigital",
   instagramUrl: "https://instagram.com/clavestudiodigital",
   locale: "es_419",
-  defaultTitle: "Clave Studio Digital - Agencia Digital para Pymes en LATAM",
+  defaultTitle: "Clave Studio Digital | Web y Automatización para Pymes",
   defaultDescription:
-    "Estudio digital para pymes en LATAM. Creamos sitios web, tiendas online y automatizaciones para negocios que necesitan vender mejor, verse bien en Google y operar con más claridad.",
+    "Estudio digital para pymes en Uruguay. Creamos sitios web, tiendas online y automatizaciones con foco en ventas, velocidad y crecimiento regional.",
   ogDescription:
-    "Desarrollo web, e-commerce y automatizaciones para pymes en LATAM, con foco comercial fuerte en Uruguay.",
+    "Desarrollo web, e-commerce y automatizaciones para pymes, con foco principal en Uruguay y alcance para toda Latinoamérica.",
   keywords: [
     "agencia digital latam",
     "desarrollo web latam",
