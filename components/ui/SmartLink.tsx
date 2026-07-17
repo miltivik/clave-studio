@@ -30,7 +30,21 @@ type SmartLinkProps = {
 )
 
 function getSectionHref(sectionId: string) {
-  return `/?${SECTION_PARAM}=${encodeURIComponent(sectionId)}`
+  return `/#${encodeURIComponent(sectionId)}`
+}
+
+function getRequestedSection() {
+  const hash = window.location.hash.slice(1)
+  if (hash) {
+    try {
+      return decodeURIComponent(hash)
+    } catch {
+      return null
+    }
+  }
+
+  const params = new URLSearchParams(window.location.search)
+  return params.get(SECTION_PARAM)
 }
 
 function getHeaderOffset() {
@@ -109,8 +123,7 @@ export function SectionScrollHandler() {
     const currentPathname = pathname || window.location.pathname
     if (currentPathname !== "/") return
 
-    const params = new URLSearchParams(window.location.search)
-    const sectionId = params.get(SECTION_PARAM)
+    const sectionId = getRequestedSection()
     if (!sectionId) return
     const targetSectionId = sectionId
 

@@ -139,6 +139,15 @@ test("regional metadata titles map one concise query to each page", () => {
   }
 });
 
+test("section links generate fragments and retain the legacy query fallback", () => {
+  const source = read("components/ui/SmartLink.tsx");
+
+  assert.match(source, /return `\/#\$\{encodeURIComponent\(sectionId\)\}`/);
+  assert.doesNotMatch(source, /return `\/\?\$\{SECTION_PARAM\}=/);
+  assert.match(source, /window\.location\.hash/);
+  assert.match(source, /params\.get\(SECTION_PARAM\)/);
+});
+
 test("security.txt exposes required disclosure fields", () => {
   const source = read("app/.well-known/security.txt/route.ts");
 
