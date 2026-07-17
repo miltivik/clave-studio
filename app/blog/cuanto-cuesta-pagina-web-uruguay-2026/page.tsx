@@ -3,6 +3,7 @@ import Link from "next/link"
 import { Navbar } from "@/components/layout/Navbar"
 import { Footer } from "@/components/layout/Footer"
 import { siteConfig } from "@/lib/site"
+import { createBlogPostingJsonLd, serializeJsonLd } from "@/lib/structured-data"
 
 export const metadata: Metadata = {
   title: "Cuánto cuesta una página web en Uruguay en 2026",
@@ -24,9 +25,21 @@ export const metadata: Metadata = {
   },
 }
 
+const articleSchema = createBlogPostingJsonLd({
+  headline: "Cuánto cuesta una página web en Uruguay en 2026",
+  description:
+    "Desglosamos los costos reales de desarrollar un sitio web en Uruguay en 2026: landing pages, sitios corporativos, tiendas online y presupuestos por etapa.",
+  path: "/blog/cuanto-cuesta-pagina-web-uruguay-2026",
+  datePublished: "2026-05-05",
+})
+
 export default function BlogPost() {
   return (
     <div className="min-h-screen bg-negro-clave">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleSchema) }}
+      />
       <Navbar />
       <main className="pt-[72px]">
         <article className="container-clave pt-20 pb-20">
@@ -38,6 +51,7 @@ export default function BlogPost() {
               <time className="text-xs text-grafito" dateTime="2026-05-05">
                 5 de mayo de 2026
               </time>
+              <span className="text-xs text-grafito">Por {siteConfig.name}</span>
             </div>
 
             <h1 className="font-display text-[clamp(2rem,5vw,3.5rem)] font-light text-crema leading-tight mb-6">
@@ -189,11 +203,10 @@ export default function BlogPost() {
                 ¿Por qué invertir en desarrollo web profesional?
               </h2>
               <p className="text-grafito leading-relaxed mb-4">
-                Un sitio web bien hecho no es un gasto, es una inversión. Las pymes uruguayas con
-                presencia digital profesional reportan hasta un 40% más de consultas comparado con
-                quienes solo tienen redes sociales. Google prioriza sitios rápidos, seguros y con
-                buena estructura. Un desarrollo amateur te puede costar posiciones orgánicas y
-                conversiones.
+                Un sitio web bien hecho no es solo una pieza visual. Debe explicar tu oferta, responder
+                dudas y facilitar que una visita termine en consulta. Una base rápida, segura y bien
+                estructurada también permite medir resultados y trabajar el posicionamiento orgánico sin
+                rehacer el proyecto.
               </p>
 
               <h2 className="font-display text-2xl text-crema font-light mt-12 mb-4">
@@ -209,6 +222,9 @@ export default function BlogPost() {
             <div className="mt-12 flex flex-wrap gap-4">
               <Link href="/#contacto" className="btn-primary">
                 Solicitar presupuesto →
+              </Link>
+              <Link href="/desarrollo-web-uruguay" className="btn-secondary">
+                Ver desarrollo web en Uruguay
               </Link>
               <Link href="/blog" className="btn-secondary">
                 Ver más artículos

@@ -387,6 +387,10 @@ export const desarrolloWebContent: ServicePageContent = {
     { label: "Agencia Digital Uruguay", href: "/agencia-digital-uruguay" },
     { label: "E-commerce Uruguay", href: "/ecommerce-uruguay" },
     { label: "Automatizaciones Uruguay", href: "/automatizaciones-uruguay" },
+    {
+      label: "Cuánto cuesta una página web en Uruguay",
+      href: "/blog/cuanto-cuesta-pagina-web-uruguay-2026",
+    },
   ],
 }
 
@@ -501,6 +505,10 @@ export const ecommerceContent: ServicePageContent = {
     { label: "Agencia Digital Uruguay", href: "/agencia-digital-uruguay" },
     { label: "Desarrollo Web Uruguay", href: "/desarrollo-web-uruguay" },
     { label: "Automatizaciones Uruguay", href: "/automatizaciones-uruguay" },
+    {
+      label: "Shopify vs WooCommerce en LATAM",
+      href: "/blog/shopify-vs-woocommerce-latam",
+    },
   ],
 }
 
@@ -615,6 +623,10 @@ export const automatizacionesContent: ServicePageContent = {
     { label: "Agencia Digital Uruguay", href: "/agencia-digital-uruguay" },
     { label: "Desarrollo Web Uruguay", href: "/desarrollo-web-uruguay" },
     { label: "E-commerce Uruguay", href: "/ecommerce-uruguay" },
+    {
+      label: "Automatizaciones para pymes en Uruguay",
+      href: "/blog/automatizaciones-pyme-uruguay",
+    },
   ],
 }
 
@@ -655,6 +667,10 @@ export const desarrolloWebLatamContent: ServicePageContent = {
     { label: "E-commerce LATAM", href: "/ecommerce-latam" },
     { label: "Automatizaciones LATAM", href: "/automatizaciones-latam" },
     { label: "Desarrollo Web Uruguay", href: "/desarrollo-web-uruguay" },
+    {
+      label: "Cuánto cuesta una página web en Uruguay",
+      href: "/blog/cuanto-cuesta-pagina-web-uruguay-2026",
+    },
   ],
 }
 
@@ -695,6 +711,10 @@ export const ecommerceLatamContent: ServicePageContent = {
     { label: "Desarrollo Web LATAM", href: "/desarrollo-web-latam" },
     { label: "Automatizaciones LATAM", href: "/automatizaciones-latam" },
     { label: "E-commerce Uruguay", href: "/ecommerce-uruguay" },
+    {
+      label: "Shopify vs WooCommerce en LATAM",
+      href: "/blog/shopify-vs-woocommerce-latam",
+    },
   ],
 }
 
@@ -735,6 +755,10 @@ export const automatizacionesLatamContent: ServicePageContent = {
     { label: "Desarrollo Web LATAM", href: "/desarrollo-web-latam" },
     { label: "E-commerce LATAM", href: "/ecommerce-latam" },
     { label: "Automatizaciones Uruguay", href: "/automatizaciones-uruguay" },
+    {
+      label: "Automatizaciones para pymes en Uruguay",
+      href: "/blog/automatizaciones-pyme-uruguay",
+    },
   ],
 }
 

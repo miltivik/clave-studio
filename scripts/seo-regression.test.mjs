@@ -15,6 +15,12 @@ function firstTitle(source) {
   return match[1];
 }
 
+const articlePages = [
+  "app/blog/cuanto-cuesta-pagina-web-uruguay-2026/page.tsx",
+  "app/blog/shopify-vs-woocommerce-latam/page.tsx",
+  "app/blog/automatizaciones-pyme-uruguay/page.tsx",
+];
+
 function hexToRgb(hex) {
   const value = hex.replace("#", "");
   return {
@@ -146,6 +152,41 @@ test("section links generate fragments and retain the legacy query fallback", ()
   assert.doesNotMatch(source, /return `\/\?\$\{SECTION_PARAM\}=/);
   assert.match(source, /window\.location\.hash/);
   assert.match(source, /params\.get\(SECTION_PARAM\)/);
+});
+
+test("blog posts expose visible authorship and BlogPosting JSON-LD", () => {
+  const structuredData = read("lib/structured-data.ts");
+  assert.match(structuredData, /export function createBlogPostingJsonLd/);
+  assert.match(structuredData, /"@type": "BlogPosting"/);
+
+  for (const page of articlePages) {
+    const source = read(page);
+    assert.match(source, /createBlogPostingJsonLd/);
+    assert.match(source, /serializeJsonLd\(articleSchema\)/);
+    assert.match(source, /Por \{siteConfig\.name\}/);
+  }
+});
+
+test("editorial content links to its matching commercial page", () => {
+  const targets = new Map([
+    [articlePages[0], "/desarrollo-web-uruguay"],
+    [articlePages[1], "/ecommerce-latam"],
+    [articlePages[2], "/automatizaciones-uruguay"],
+  ]);
+
+  for (const [page, target] of targets) {
+    assert.match(read(page), new RegExp(`href="${target}"`));
+  }
+
+  const content = read("lib/content.ts");
+  assert.match(content, /href: "\/blog\/cuanto-cuesta-pagina-web-uruguay-2026"/);
+  assert.match(content, /href: "\/blog\/shopify-vs-woocommerce-latam"/);
+  assert.match(content, /href: "\/blog\/automatizaciones-pyme-uruguay"/);
+});
+
+test("blog copy avoids the unsupported 40 percent inquiry claim", () => {
+  const source = read(articlePages[0]);
+  assert.doesNotMatch(source, /40% m[aá]s de consultas/);
 });
 
 test("security.txt exposes required disclosure fields", () => {

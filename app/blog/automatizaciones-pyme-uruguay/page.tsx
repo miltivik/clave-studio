@@ -3,6 +3,7 @@ import Link from "next/link"
 import { Navbar } from "@/components/layout/Navbar"
 import { Footer } from "@/components/layout/Footer"
 import { siteConfig } from "@/lib/site"
+import { createBlogPostingJsonLd, serializeJsonLd } from "@/lib/structured-data"
 
 export const metadata: Metadata = {
   title: "5 automatizaciones para pymes en Uruguay",
@@ -24,9 +25,21 @@ export const metadata: Metadata = {
   },
 }
 
+const articleSchema = createBlogPostingJsonLd({
+  headline: "5 automatizaciones para pymes en Uruguay",
+  description:
+    "Descubrí 5 automatizaciones prácticas para pymes en Uruguay: WhatsApp, CRM, email automático, reportes y seguimiento de clientes sin trabajo manual.",
+  path: "/blog/automatizaciones-pyme-uruguay",
+  datePublished: "2026-05-05",
+})
+
 export default function BlogPost() {
   return (
     <div className="min-h-screen bg-negro-clave">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleSchema) }}
+      />
       <Navbar />
       <main className="pt-[72px]">
         <article className="container-clave pt-20 pb-20">
@@ -38,6 +51,7 @@ export default function BlogPost() {
               <time className="text-xs text-grafito" dateTime="2026-05-05">
                 5 de mayo de 2026
               </time>
+              <span className="text-xs text-grafito">Por {siteConfig.name}</span>
             </div>
 
             <h1 className="font-display text-[clamp(2rem,5vw,3.5rem)] font-light text-crema leading-tight mb-6">
@@ -173,6 +187,9 @@ export default function BlogPost() {
             <div className="mt-12 flex flex-wrap gap-4">
               <Link href="/#contacto" className="btn-primary">
                 Quiero automatizar mi negocio →
+              </Link>
+              <Link href="/automatizaciones-uruguay" className="btn-secondary">
+                Ver automatizaciones en Uruguay
               </Link>
               <Link href="/blog" className="btn-secondary">
                 Ver más artículos
