@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     "Condiciones generales de uso del sitio web de Clave Studio Digital, incluyendo alcance informativo, propiedad intelectual y contacto.",
   alternates: { canonical: `${siteConfig.url}${siteConfig.routes.terms}` },
   openGraph: {
+    locale: siteConfig.locale,
     title: "Términos de Uso | Clave Studio Digital",
     description: "Condiciones generales de uso del sitio web de Clave Studio Digital.",
     url: `${siteConfig.url}${siteConfig.routes.terms}`,

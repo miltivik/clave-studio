@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
+    locale: siteConfig.locale,
     title: hubUruguayContent.title,
     description: hubUruguayContent.description,
     url: `${siteConfig.url}${siteConfig.routes.agenciaDigitalUruguay}`,

@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     "Conocé cómo Clave Studio Digital recopila, usa y protege la información compartida a través de su sitio web y formularios de contacto.",
   alternates: { canonical: `${siteConfig.url}${siteConfig.routes.privacy}` },
   openGraph: {
+    locale: siteConfig.locale,
     title: "Política de Privacidad | Clave Studio Digital",
     description:
       "Información sobre el tratamiento de datos personales y consultas enviadas a Clave Studio Digital.",

@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     "Artículos sobre desarrollo web, e-commerce y automatizaciones para pymes en Uruguay y LATAM.",
   alternates: { canonical: `${siteConfig.url}/blog` },
   openGraph: {
+    locale: siteConfig.locale,
     title: "Blog | Clave Studio Digital",
     description:
       "Guías y artículos sobre desarrollo web, e-commerce y automatizaciones para pymes.",

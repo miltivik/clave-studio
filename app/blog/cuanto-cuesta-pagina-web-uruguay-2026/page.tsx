@@ -11,11 +11,15 @@ export const metadata: Metadata = {
     "Desglosamos los costos reales de desarrollar un sitio web en Uruguay en 2026: landing pages, sitios corporativos, tiendas online y presupuestos por etapa.",
   alternates: { canonical: `${siteConfig.url}/blog/cuanto-cuesta-pagina-web-uruguay-2026` },
   openGraph: {
+    type: "article",
+    locale: siteConfig.locale,
     title: "Cuánto cuesta una página web en Uruguay en 2026",
     description:
       "Costos reales de desarrollar un sitio web en Uruguay: landing pages, corporativos y e-commerce.",
     url: `${siteConfig.url}/blog/cuanto-cuesta-pagina-web-uruguay-2026`,
     images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Costo página web Uruguay 2026" }],
+    publishedTime: "2026-05-05",
+    modifiedTime: "2026-05-12",
   },
   twitter: {
     title: "Cuánto cuesta una página web en Uruguay en 2026",
@@ -31,6 +35,7 @@ const articleSchema = createBlogPostingJsonLd({
     "Desglosamos los costos reales de desarrollar un sitio web en Uruguay en 2026: landing pages, sitios corporativos, tiendas online y presupuestos por etapa.",
   path: "/blog/cuanto-cuesta-pagina-web-uruguay-2026",
   datePublished: "2026-05-05",
+  dateModified: "2026-05-12",
 })
 
 export default function BlogPost() {

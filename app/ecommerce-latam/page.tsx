@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
+    locale: siteConfig.locale,
     title: ecommerceLatamContent.title,
     description: ecommerceLatamContent.description,
     url: `${siteConfig.url}${siteConfig.routes.ecommerceLatam}`,

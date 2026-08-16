@@ -5,6 +5,7 @@ interface BlogPostingJsonLdInput {
   description: string
   path: string
   datePublished: string
+  dateModified: string
 }
 
 export function createBlogPostingJsonLd({
@@ -12,6 +13,7 @@ export function createBlogPostingJsonLd({
   description,
   path,
   datePublished,
+  dateModified,
 }: BlogPostingJsonLdInput) {
   const url = `${siteConfig.url}${path}`
   const organization = {
@@ -30,6 +32,7 @@ export function createBlogPostingJsonLd({
     mainEntityOfPage: url,
     image: `${siteConfig.url}/opengraph-image`,
     datePublished,
+    dateModified,
     inLanguage: "es",
     author: organization,
     publisher: organization,

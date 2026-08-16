@@ -188,6 +188,27 @@ test("blog copy avoids the unsupported 40 percent inquiry claim", () => {
   const source = read(articlePages[0]);
   assert.doesNotMatch(source, /40% m[aá]s de consultas/);
 });
+test("sitemap entries declare explicit lastModified dates", () => {
+  const source = read("app/sitemap.ts");
+  const urlEntries = source.match(/^\s*url:/gm) ?? [];
+  const lastModifiedEntries =
+    source.match(/lastModified:\s*new Date\("[0-9]{4}-[0-9]{2}-[0-9]{2}"\)/g) ?? [];
+
+  assert.ok(urlEntries.length > 0, "sitemap must declare entries");
+  assert.equal(
+    lastModifiedEntries.length,
+    urlEntries.length,
+    "every sitemap entry must declare an explicit lastModified date"
+  );
+
+  for (const entry of lastModifiedEntries) {
+    const isoDate = entry.match(/"([^"]+)"/)[1];
+    const parsed = new Date(isoDate);
+
+    assert.ok(!Number.isNaN(parsed.getTime()), `Invalid lastModified date ${isoDate}`);
+    assert.equal(parsed.toISOString().slice(0, 10), isoDate, `Invalid lastModified date ${isoDate}`);
+  }
+});
 
 test("security.txt exposes required disclosure fields", () => {
   const source = read("app/.well-known/security.txt/route.ts");
@@ -283,4 +304,48 @@ test("turnstile script is deferred until the form is near interaction", () => {
   assert.match(source, /onFocusCapture=\{\(\) => setShouldLoadScript\(true\)\}/);
   assert.match(source, /\{shouldLoadScript && siteKey && \(/);
   assert.match(source, /strategy="afterInteractive"/);
+});
+
+function listPageFiles(dir, acc = []) {
+  for (const entry of fs.readdirSync(path.join(root, dir), { withFileTypes: true })) {
+    const relative = `${dir}/${entry.name}`;
+    if (entry.isDirectory()) {
+      listPageFiles(relative, acc);
+    } else if (entry.name === "page.tsx") {
+      acc.push(relative);
+    }
+  }
+  return acc;
+}
+
+test("every page openGraph metadata block declares the site locale", () => {
+  const pagesWithOpenGraph = listPageFiles("app").filter((page) =>
+    read(page).includes("openGraph:")
+  );
+
+  assert.ok(pagesWithOpenGraph.length > 0, "expected pages to define openGraph metadata");
+
+  for (const page of pagesWithOpenGraph) {
+    assert.match(
+      read(page),
+      /locale:\s*siteConfig\.locale/,
+      `${page} must set openGraph.locale explicitly`
+    );
+  }
+});
+
+test("blog posts emit BlogPosting schema dates and article openGraph metadata", () => {
+  const blogPosts = [
+    "app/blog/cuanto-cuesta-pagina-web-uruguay-2026/page.tsx",
+    "app/blog/shopify-vs-woocommerce-latam/page.tsx",
+    "app/blog/automatizaciones-pyme-uruguay/page.tsx",
+  ];
+
+  for (const post of blogPosts) {
+    const source = read(post);
+
+    assert.match(source, /type:\s*"article"/, `${post} must set openGraph.type to "article"`);
+    assert.match(source, /datePublished:\s*"/, `${post} must declare datePublished`);
+    assert.match(source, /dateModified:\s*"/, `${post} must declare dateModified`);
+  }
 });

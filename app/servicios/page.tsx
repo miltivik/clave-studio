@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     "Servicios de desarrollo web, e-commerce y automatizaciones para pymes en LATAM, con páginas específicas para Uruguay.",
   alternates: { canonical: `${siteConfig.url}${siteConfig.routes.services}` },
   openGraph: {
+    locale: siteConfig.locale,
     title: "Servicios Digitales para LATAM y Uruguay",
     description:
       "Landing pages, tiendas online y automatizaciones para negocios que necesitan crecer con una presencia digital seria en la región.",

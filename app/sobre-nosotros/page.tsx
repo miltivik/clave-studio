@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     "Conocé al equipo detrás de Clave Studio Digital. Especialistas en desarrollo web, e-commerce y automatizaciones para pymes en Uruguay y LATAM.",
   alternates: { canonical: `${siteConfig.url}/sobre-nosotros` },
   openGraph: {
+    locale: siteConfig.locale,
     title: "Sobre Nosotros | Clave Studio Digital",
     description:
       "Equipo especializado en desarrollo web, e-commerce y automatizaciones para pymes en Uruguay y LATAM.",

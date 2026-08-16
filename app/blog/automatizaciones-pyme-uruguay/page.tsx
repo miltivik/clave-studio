@@ -11,11 +11,15 @@ export const metadata: Metadata = {
     "Descubrí 5 automatizaciones prácticas para pymes en Uruguay: WhatsApp, CRM, email automático, reportes y seguimiento de clientes sin trabajo manual.",
   alternates: { canonical: `${siteConfig.url}/blog/automatizaciones-pyme-uruguay` },
   openGraph: {
+    type: "article",
+    locale: siteConfig.locale,
     title: "5 automatizaciones que toda pyme uruguaya necesita",
     description:
       "Automatizaciones prácticas para pymes en Uruguay: WhatsApp, CRM, email y reportes automáticos.",
     url: `${siteConfig.url}/blog/automatizaciones-pyme-uruguay`,
     images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Automatizaciones pymes Uruguay" }],
+    publishedTime: "2026-05-05",
+    modifiedTime: "2026-05-12",
   },
   twitter: {
     title: "5 automatizaciones que toda pyme uruguaya necesita",
@@ -26,11 +30,11 @@ export const metadata: Metadata = {
 }
 
 const articleSchema = createBlogPostingJsonLd({
-  headline: "5 automatizaciones para pymes en Uruguay",
-  description:
+  headline: "5 automatizaciones para pymes en Uruguay",  description:
     "Descubrí 5 automatizaciones prácticas para pymes en Uruguay: WhatsApp, CRM, email automático, reportes y seguimiento de clientes sin trabajo manual.",
   path: "/blog/automatizaciones-pyme-uruguay",
   datePublished: "2026-05-05",
+  dateModified: "2026-05-12",
 })
 
 export default function BlogPost() {

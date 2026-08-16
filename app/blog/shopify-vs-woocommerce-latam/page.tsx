@@ -11,11 +11,15 @@ export const metadata: Metadata = {
     "Comparativa completa de Shopify vs WooCommerce para vender online en LATAM: medios de pago, envíos, costos, escalabilidad y cuál elegir según tu negocio.",
   alternates: { canonical: `${siteConfig.url}/blog/shopify-vs-woocommerce-latam` },
   openGraph: {
+    type: "article",
+    locale: siteConfig.locale,
     title: "Shopify vs WooCommerce: qué elegir en LATAM",
     description:
       "Comparativa técnica y comercial de Shopify vs WooCommerce para vender online en LATAM.",
     url: `${siteConfig.url}/blog/shopify-vs-woocommerce-latam`,
     images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Shopify vs WooCommerce LATAM" }],
+    publishedTime: "2026-05-05",
+    modifiedTime: "2026-05-12",
   },
   twitter: {
     title: "Shopify vs WooCommerce: qué elegir en LATAM",
@@ -26,11 +30,11 @@ export const metadata: Metadata = {
 }
 
 const articleSchema = createBlogPostingJsonLd({
-  headline: "Shopify vs WooCommerce en LATAM 2026",
-  description:
+  headline: "Shopify vs WooCommerce en LATAM 2026",  description:
     "Comparativa completa de Shopify vs WooCommerce para vender online en LATAM: medios de pago, envíos, costos, escalabilidad y cuál elegir según tu negocio.",
   path: "/blog/shopify-vs-woocommerce-latam",
   datePublished: "2026-05-05",
+  dateModified: "2026-05-12",
 })
 
 export default function BlogPost() {
