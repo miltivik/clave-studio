@@ -56,13 +56,7 @@ const SERVICES = [
   },
 ]
 
-function ServiceContent({
-  service,
-  mobile,
-}: {
-  service: (typeof SERVICES)[number]
-  mobile?: boolean
-}) {
+function ServiceContent({ service }: { service: (typeof SERVICES)[number] }) {
   return (
     <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-20">
       <div>
@@ -91,9 +85,7 @@ function ServiceContent({
         </ul>
         <SmartLink
           sectionId="contacto"
-          className={`inline-flex items-center gap-2 text-sm font-medium text-oro-clave transition-colors hover:text-miel ${
-            mobile ? "mt-1 self-start" : "mt-2"
-          }`}
+          className="inline-flex items-center gap-2 text-sm font-medium text-oro-clave transition-colors hover:text-miel mt-1 self-start lg:mt-2 lg:self-auto"
         >
           {service.cta}
         </SmartLink>
@@ -172,49 +164,45 @@ export function ServicesSection() {
   return (
     <section id="servicios" ref={sectionRef} className="relative overflow-hidden bg-negro-clave">
       <h2 className="sr-only">Servicios</h2>
-      <div className="container-clave py-10 pb-20 lg:hidden">
-        <div className="space-y-6">
-          {SERVICES.map((service) => (
+
+      {/* Single source of markup for mobile cards and desktop pinned panels:
+          on mobile the wrapper behaves like `container-clave py-10 pb-20` and
+          the articles are stacked cards; on lg the wrapper is a full-bleed
+          h-screen stage (utilities replicate container-clave because the plain
+          class is unlayered CSS and would win over lg: overrides) and the
+          articles become the absolutely positioned panels animated by GSAP. */}
+      <div
+        ref={panelsRef}
+        className="relative mx-auto w-full max-w-[var(--max-width)] px-[var(--container-px)] py-10 pb-20 lg:h-screen lg:max-w-none lg:px-0 lg:py-0 lg:pb-0"
+      >
+        <div className="flex flex-col gap-6 lg:contents">
+          {SERVICES.map((service, index) => (
             <article
               key={service.number}
-              className="relative overflow-hidden rounded-2xl border border-grafito/15 bg-negro-mid/60 p-6"
+              className={`service-panel relative overflow-hidden rounded-2xl border border-grafito/15 bg-negro-mid/60 p-6 lg:absolute lg:inset-0 lg:flex lg:items-center lg:rounded-none lg:border-0 lg:bg-negro-clave lg:p-0 ${
+                index > 0 ? "lg:opacity-0" : ""
+              }`}
+              style={{ zIndex: index + 1 }}
             >
-              <ServiceContent service={service} mobile />
+              <div className="w-full lg:mx-auto lg:max-w-[var(--max-width)] lg:px-[var(--container-px)]">
+                <ServiceContent service={service} />
+              </div>
+
               <div
-                className={`pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t ${service.accent}`}
+                className={`pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t ${service.accent} lg:h-[40%]`}
               />
             </article>
           ))}
         </div>
       </div>
 
-      <div className="hidden lg:block">
-        <div ref={panelsRef} className="relative h-screen w-full">
-          {SERVICES.map((service, index) => (
-            <div
-              key={service.number}
-              className={`service-panel absolute inset-0 flex items-center bg-negro-clave ${index > 0 ? "opacity-0" : ""}`}
-              style={{ zIndex: index + 1 }}
-            >
-              <div className="container-clave">
-                <ServiceContent service={service} />
-              </div>
-
-              <div
-                className={`pointer-events-none absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-t ${service.accent}`}
-              />
-            </div>
-          ))}
-        </div>
-
-        <div className="absolute right-8 top-1/2 z-10 hidden -translate-y-1/2 flex-col gap-3 lg:flex">
-          {SERVICES.map((service, index) => (
-            <div
-              key={service.number}
-              className={`progress-dot w-1 rounded-full bg-grafito/30 transition-all duration-300 ${index === 0 ? "h-8 bg-oro-clave" : "h-4"}`}
-            />
-          ))}
-        </div>
+      <div className="absolute right-8 top-1/2 z-10 hidden -translate-y-1/2 flex-col gap-3 lg:flex">
+        {SERVICES.map((service, index) => (
+          <div
+            key={service.number}
+            className={`progress-dot w-1 rounded-full bg-grafito/30 transition-all duration-300 ${index === 0 ? "h-8 bg-oro-clave" : "h-4"}`}
+          />
+        ))}
       </div>
     </section>
   )
